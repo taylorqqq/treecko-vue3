@@ -1,0 +1,7 @@
+<template>
+  <div>mail</div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from "vue";
+</script>
