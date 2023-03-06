@@ -6,7 +6,13 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      component: () => import("../views/home.vue"),
+      component: () => import("../layout/admin.vue"),
+      children: [
+        {
+          path: "admin",
+          component: () => import("../views/home.vue"),
+        },
+      ],
     },
   ],
 });
