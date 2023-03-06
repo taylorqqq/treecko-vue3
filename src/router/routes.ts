@@ -2,11 +2,11 @@ import { RouteRecordRaw } from "vue-router";
 const routes = [
   {
     path: "/",
-    component: () => import("../layout/admin.vue"),
+    component: () => import("@/layout/admin.vue"),
     children: [
       {
         path: "admin",
-        component: () => import("../views/home.vue"),
+        component: () => import("@/views/home.vue"),
       },
     ],
   },
