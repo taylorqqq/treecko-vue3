@@ -1,7 +1,7 @@
 <template>
-  <router-view />
+  <div>home</div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref } from "vue";
 </script>
