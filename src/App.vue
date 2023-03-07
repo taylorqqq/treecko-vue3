@@ -1,8 +1,8 @@
 <template>
-  <ul>
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
+  <ul class="bg-red-500">
+    <li>111</li>
+    <li>111</li>
+    <li>111</li>
   </ul>
   <router-view />
 </template>

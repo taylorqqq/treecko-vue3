@@ -26,7 +26,8 @@ function getRouteByModule(file: string, module: { [key: string]: any }) {
     component: module.default,
   } as RouteRecordRaw;
 
-  return route;
+  //   return route;
+  return Object.assign(route, module.default?.route); // 接收到组件内的route配置
 }
 
 function getChildrenRoutes(layoutRoute: RouteRecordRaw) {
