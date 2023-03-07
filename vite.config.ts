@@ -1,12 +1,13 @@
 import { defineConfig, ConfigEnv, loadEnv } from "vite";
 import alias from "./vite/alias";
-import { parseEev } from "./vite/util";
+import { parseEnv } from "./vite/util";
 import { setupPlugins } from "./vite/plugins";
 
 export default ({ command, mode }: ConfigEnv) => {
-  const env = loadEnv(mode, process.cwd()); // process.cwd() 表示当前工作目录
   const isBuild = command === "build"; // 判断是否是生产环境
-  const { VITE_ADMIN_API } = parseEev(env);
+  const root = process.cwd(); // 表示当前工作目录
+  const env = parseEnv(loadEnv(mode, root));
+  const { VITE_ADMIN_API } = env;
   return {
     plugins: setupPlugins(isBuild, env),
     resolve: {
