@@ -8,6 +8,7 @@ export function parseEnv(env: Record<string, any>): ImportMetaEnv {
     else if (/^\d+$/.test(value)) envs[key] = Number(value);
     else if (value == "null") envs[key] = null;
     else if (value == "undefined") envs[key] = undefined;
+    else envs[key] = value;
   });
   return envs;
 }

@@ -9,4 +9,6 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import { env } from "@/types/helper";
+console.log(env);
 </script>

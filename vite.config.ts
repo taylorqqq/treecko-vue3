@@ -14,7 +14,6 @@ export default ({ command, mode }: ConfigEnv) => {
       alias,
     },
     server: {
-      port: 3000,
       open: true,
       proxy: {
         VITE_ADMIN_API: {
