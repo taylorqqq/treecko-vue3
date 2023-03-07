@@ -1,4 +1,5 @@
 import { MockMethod } from "vite-plugin-mock";
+import Mock from "mockjs";
 export default [
   {
     url: "/api/get",
@@ -7,7 +8,8 @@ export default [
       return {
         code: 200,
         data: {
-          name: "vben",
+          name: Mock.Random.cname(),
+          age: Mock.Random.integer(18, 60),
         },
       };
     },
