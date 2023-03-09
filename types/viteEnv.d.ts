@@ -1,7 +1,6 @@
 interface ImportMetaEnv {
   VITE_ADMIN_API: string;
-  VITE_ADMIN_STATUS: boolean;
-  VITE_ADMIN_NUMBER: number;
+  VITE_ROUTER_AUTOLOAD: boolean;
 }
 
 interface ImportMeta {

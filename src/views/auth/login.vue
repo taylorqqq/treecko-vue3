@@ -34,6 +34,9 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import validate from "@/plugins/validate";
+console.log(validate);
+const {} = validate;
 </script>
 
 <style lang="scss" scoped>

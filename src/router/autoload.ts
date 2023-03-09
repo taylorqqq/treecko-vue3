@@ -1,4 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
+import { env } from "@/utils/helper";
 
 const layouts = import.meta.globEager("../layout/*.vue");
 const views = import.meta.globEager("../views/**/*.vue");
@@ -15,13 +16,17 @@ function getRoutes() {
 
 function getRouteByModule(file: string, module: { [key: string]: any }) {
   const modulePath = file.match(/\.\/(.*)\.vue$/)?.[1] as string;
-  // 找出第一个/的位置
-  const index = modulePath.indexOf("/");
+  // // 找出第一个/的位置
+  const firstIndex = modulePath.indexOf("/");
+  // // 截取最后一个/后面的字符串
+  const path = modulePath.substring(firstIndex + 1);
+  // 找出最后一个/的位置
+  const lastIndex = modulePath.lastIndexOf("/");
   // 截取最后一个/后面的字符串
-  const name = modulePath.substring(index + 1);
+  const name = modulePath.substring(lastIndex + 1);
 
   const route = {
-    path: `/${name}`,
+    path: `/${path}`,
     name,
     component: module.default,
   } as RouteRecordRaw;
@@ -41,4 +46,7 @@ function getChildrenRoutes(layoutRoute: RouteRecordRaw) {
 
   return routes;
 }
-export default getRoutes();
+// console.log(import.meta.env.VITE_ROUTER_AUTOLOAD);
+const { VITE_ROUTER_AUTOLOAD } = env;
+const routes = VITE_ROUTER_AUTOLOAD ? getRoutes() : ([] as RouteRecordRaw[]);
+export default routes;
