@@ -10,17 +10,29 @@
 
 import http from "@/plugins/axios";
 
-interface User {
+interface userinterface {
   name: string;
   age: number;
 }
 
 const getUserInfo = (params: any) => {
-  return http.request<User>({
-    url: "/get",
+  return http.request<userinterface>({
+    url: "/user/info",
     method: "get",
     params,
   });
 };
 
-export { getUserInfo };
+interface loginInterface {
+  token: string;
+}
+
+const userLogin = (params: any) => {
+  return http.request<loginInterface>({
+    url: "/user/login",
+    method: "post",
+    params,
+  });
+};
+
+export { getUserInfo, userLogin };

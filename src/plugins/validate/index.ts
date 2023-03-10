@@ -8,6 +8,7 @@ loadLocaleFromURL(
 ); // cdn引入
 
 veeValidate.configure({
+  // validateOnInput: true, // 默认在输入时就进行表单验证
   generateMessage: localize("zh_CN"),
 });
 

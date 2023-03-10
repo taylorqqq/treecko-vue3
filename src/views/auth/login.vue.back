@@ -1,0 +1,79 @@
+<template>
+  <Form
+    class="bg-slate-300 h-screen flex justify-center items-center p-5"
+    @submit="handleLogin"
+  >
+    <div
+      class="w-[720px] bg-white md:grid grid-cols-2 rounded-md shadow-md overflow-hidden"
+    >
+      <div class="p-6">
+        <h2 class="text-center text-gray-700 text-lg">会员登录</h2>
+        <div class="mt-8">
+          <!-- v-slot="{ field }" -->
+          <!-- <Field
+              name="account"
+              :rules="{
+                required: true,
+              }"
+              #default="{ field }"
+            >
+              <input
+                v-bind="field"
+                class="login-input mt-0"
+                label="账号"
+                placeholder="请输入手机号或者邮箱"
+              />
+            </Field>
+            <ErrorMessage name="account" as="div" class="validate-error" /> -->
+          <Field
+            name="account"
+            :rules="{
+              required: true,
+            }"
+            label="账号"
+            placeholder="请输入手机号或者邮箱"
+            class="login-input mt-0"
+          ></Field>
+          <!-- :validate-on-input="true" // 实时验证 -->
+          <ErrorMessage name="account" as="div" class="validate-error" />
+          <Field
+            name="password"
+            :rules="{
+              required: true,
+              min: 6,
+            }"
+            label="密码"
+            placeholder="请输入密码"
+            class="login-input mt-5"
+            :validate-on-input="true"
+          ></Field>
+          <ErrorMessage name="password" as="div" class="validate-error" />
+        </div>
+        <button class="login-button mt-5">登录</button>
+
+        <div class="flex justify-center gap-2 mt-5">
+          <a href="#" class="fast-link">网站首页</a>
+          <a href="#" class="fast-link">会员注册</a>
+          <a href="#" class="fast-link">忘记密码</a>
+        </div>
+      </div>
+      <div class="hidden md:block">
+        <img src="/images/login.jpg" class="h-80 w-full object-cover" />
+      </div>
+    </div>
+  </Form>
+</template>
+
+<script lang="ts" setup>
+import { ref } from "vue";
+import validate from "@/plugins/validate";
+import "@/style/global.scss";
+import { email } from "@vee-validate/rules";
+const { Form, Field, ErrorMessage } = validate;
+
+const handleLogin = (values) => {
+  console.log(values);
+};
+</script>
+
+<style lang="scss" scoped></style>

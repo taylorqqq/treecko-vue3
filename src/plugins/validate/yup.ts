@@ -2,8 +2,8 @@ import * as yup from "yup";
 
 yup.setLocale({
   mixed: {
-    required: `${yup.ref("$label")}不能为空`,
-    // required: `${label}不能为空`,
+    // required: `${yup.ref("$label")}不能为空`,
+    required: "${label}不能为空",
   },
   string: {
     email: "请输入正确的邮箱格式",
