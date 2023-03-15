@@ -64,6 +64,9 @@ import { ref } from "vue";
 import validate from "@/plugins/validate";
 import "@/style/global.scss";
 import { userLogin } from "@/api/user";
+import { store } from "@/utils";
+import { useRouter } from "vue-router";
+const router = useRouter();
 const { Form, Field, ErrorMessage } = validate;
 
 /**
@@ -98,9 +101,14 @@ const schema = validate.yup.object({
 // };
 
 const handleLogin = async (values) => {
-  console.log(values);
   const res = await userLogin(values);
-  console.log(res.data.token);
+  const { token } = res.data;
+  localStorage.setItem("token", token);
+  store.set("token", {
+    token,
+    expire: new Date().getTime() + 1000 * 60 * 60 * 24,
+  });
+  router.push({ name: "home" });
 };
 </script>
 

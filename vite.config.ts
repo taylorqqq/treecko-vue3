@@ -15,6 +15,7 @@ export default ({ command, mode }: ConfigEnv) => {
     },
     server: {
       open: true,
+      port: 3001,
       proxy: {
         VITE_ADMIN_API: {
           target: "http://localhost:3000",

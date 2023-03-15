@@ -7,6 +7,7 @@ export default [
     response: () => {
       return {
         code: 200,
+        message: "success",
         data: {
           token: Mock.Random.guid(),
           userInfo: {
