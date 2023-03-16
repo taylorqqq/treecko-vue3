@@ -3,6 +3,13 @@
 }
 .login-button {
   @apply w-full py-2 rounded-md text-white tracking-widest bg-blue-600 hover:bg-blue-500 hover:text-gray-200 duration-300;
+
+  &.danger {
+    @apply bg-red-600 hover:bg-red-500;
+  }
+  &.next {
+    @apply bg-purple-600 hover:bg-purple-500;
+  }
 }
 .fast-link {
   @apply text-xs text-gray-500 hover:text-gray-700 duration-300;

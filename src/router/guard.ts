@@ -9,7 +9,13 @@ class Guard {
       // 登录验证
       let token = store.get("token")?.token;
       if (this.isLogin(to, token) === false) return { name: "login" };
+
+      if (this.isGuest(to, token) === false) return { name: "home" };
     });
+  }
+
+  private isGuest(route: RouteLocationNormalized, token?: IData | null) {
+    return Boolean(!route.meta.guest || (route.meta.guest && !token));
   }
 
   private isLogin(route: RouteLocationNormalized, token?: IData | null) {

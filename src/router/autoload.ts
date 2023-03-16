@@ -6,8 +6,13 @@ const views = import.meta.globEager("../views/**/*.vue");
 
 function getRoutes() {
   const layoutRoutes = [] as RouteRecordRaw[];
-  Object.entries(layouts).forEach(([path, module]) => {
+  Object.entries(layouts).forEach(([path, module]: any) => {
     const route = getRouteByModule(path, module);
+    route.meta = { requiresAuth: false, guest: false };
+    if (route.name !== "auth") {
+      route.meta.requiresAuth = true;
+    }
+    route.meta.guest = false;
     route.children = getChildrenRoutes(route);
     layoutRoutes.push(route);
   });
@@ -37,7 +42,7 @@ function getRouteByModule(file: string, module: { [key: string]: any }) {
 
 function getChildrenRoutes(layoutRoute: RouteRecordRaw) {
   const routes = [] as RouteRecordRaw[];
-  Object.entries(views).forEach(([path, module]) => {
+  Object.entries(views).forEach(([path, module]: any) => {
     if (path.includes(`../views/${layoutRoute.name as string}`)) {
       const route = getRouteByModule(path, module);
       routes.push(route);
