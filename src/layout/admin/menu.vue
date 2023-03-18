@@ -10,23 +10,23 @@
       <dl v-for="(pmenu, index) in menus" :key="index">
         <dt @click="handeleChoosePMenu(pmenu)">
           <section>
-            <i :class="pmenu.icon"></i>
-            <span>{{ pmenu.name }}</span>
+            <i :class="pmenu.meta?.icon"></i>
+            <span>{{ pmenu.meta?.title }}</span>
           </section>
           <section>
             <i
               class="fas fa-angle-down duration-100"
-              :class="{ 'rotate-180': pmenu.active }"
+              :class="{ 'rotate-180': pmenu.meta?.isCheck }"
             ></i>
           </section>
         </dt>
         <dd
-          v-show="pmenu.active"
+          v-show="pmenu.meta?.isCheck"
           v-for="(cmenu, cindex) in pmenu.children"
-          :class="{ active: cmenu.active }"
+          :class="{ active: cmenu.meta?.isCheck }"
           @click="handeleChooseCMenu(pmenu, cmenu)"
         >
-          {{ cmenu.name }}
+          {{ cmenu.meta?.title }}
         </dd>
       </dl>
     </div>
@@ -35,88 +35,55 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, RouteRecordNormalized, RouteRecordRaw } from "vue-router";
+import { useRouterStore } from "@/store/router";
 const router = useRouter();
-
-interface IMenuItem {
-  name: string;
-  icon?: string;
-  children?: IMenuItem[];
-  active?: boolean;
-}
-
-const menus = reactive<IMenuItem[]>([
-  {
-    name: "错误页面",
-    icon: "fab fa-behance-square",
-    active: true,
-    children: [
-      {
-        name: "403",
-        active: true,
-      },
-      {
-        name: "404",
-        active: false,
-      },
-      {
-        name: "500",
-        active: false,
-      },
-    ],
-  },
-  {
-    name: "编辑器",
-    icon: "fab fa-android",
-    active: false,
-    children: [
-      {
-        name: "markdown编辑器",
-        active: false,
-      },
-      {
-        name: "富文本编辑器",
-        active: false,
-      },
-    ],
-  },
-]);
+const { routes: menus } = useRouterStore();
 
 /**
  * @description 选择菜单
- * @param {IMenuItem} pmenu 父菜单
- * @param {IMenuItem} cmenu 子菜单
- * @return {*}
  */
-const handeleChoosePMenu = (pmenu: IMenuItem) => {
-  handeleResetMenu(pmenu);
-  pmenu.active = !pmenu.active;
-  menus.forEach((item) => {
-    if (item.name == pmenu.name) {
-      if (item?.children && item?.children.length > 0) {
-        item.children[0].active = true;
-      }
-    }
-  });
+const handeleChoosePMenu = (pmenu: RouteRecordNormalized) => {
+  // handeleResetMenu(pmenu);
+  pmenu.meta.isCheck = !pmenu.meta.isCheck;
+  // menus.forEach((item) => {
+  //   if (item.meta.title == pmenu.meta.title) {
+  //     if (item?.children && item?.children.length > 0) {
+  //       handeleChooseCMenu(item, item.children[0]);
+  //     }
+  //   }
+  // });
 };
-const handeleChooseCMenu = (pmenu: IMenuItem, cmenu: IMenuItem) => {
+/**
+ * @description 选择子菜单
+ */
+const handeleChooseCMenu = (
+  pmenu: RouteRecordNormalized,
+  cmenu: RouteRecordRaw
+) => {
   handeleResetMenu(pmenu);
-  cmenu.active = true;
-  router.push({
-    name: cmenu.name,
-  });
+  if (cmenu?.meta) {
+    cmenu.meta.isCheck = true;
+    router.push({
+      path: cmenu.path,
+    });
+  }
 };
 
 /**
  * @description 状态重置
  *
  */
-const handeleResetMenu = (menu: IMenuItem) => {
+const handeleResetMenu = (menu: RouteRecordNormalized) => {
   menus.forEach((pmenu) => {
-    if (menu.name != pmenu.name) {
-      pmenu.active = false;
+    if (menu.meta.title != pmenu.meta.title) {
+      pmenu.meta.isCheck = false;
     }
-    pmenu.children?.forEach((cmenu) => (cmenu.active = false));
+    pmenu.children?.forEach((cmenu) => {
+      if (cmenu?.meta) {
+        cmenu.meta.isCheck = false;
+      }
+    });
   });
 };
 </script>

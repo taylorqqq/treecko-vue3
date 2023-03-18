@@ -10,6 +10,7 @@ export default {
     requiresAuth: true,
     guest: false,
     icon: "fab fa-blogger",
+    isCheck: true,
   },
   children: [
     {
@@ -22,6 +23,7 @@ export default {
         requiresAuth: true,
         guest: false,
         icon: "fab fa-blogger",
+        isCheck: true,
       },
     },
   ],

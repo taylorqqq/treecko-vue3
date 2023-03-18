@@ -8,5 +8,6 @@ declare module "vue-router" {
     title?: string;
     icon?: string;
     roles?: string[];
+    isCheck?: boolean;
   }
 }

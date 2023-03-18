@@ -7,6 +7,7 @@ import { App } from "vue";
 import routes from "./routes";
 import layoutRoutes from "./autoload";
 import guard from "./guard";
+import { useRouterStore } from "@/store/router";
 
 const router = createRouter({
   history: createWebHashHistory(),
