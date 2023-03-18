@@ -92,7 +92,7 @@ const handeleResetMenu = (menu: RouteRecordNormalized) => {
     dl {
       @apply text-gray-300 text-sm;
       dt {
-        @apply text-sm mt-6 flex justify-between items-center cursor-pointer;
+        @apply text-sm mt-2 py-3 px-2 bg-gray-900 rounded-md flex justify-between items-center cursor-pointer;
         section {
           @apply flex items-center;
           i {
