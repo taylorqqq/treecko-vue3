@@ -29,7 +29,7 @@
     </el-card>
   </div>
 
-  <div class="grid md:grid-flow-col md:grid-cols-2 gap-3 bg-white mt-5 p-3">
+  <div class="grid md:grid-flow-col md:grid-cols-2 gap-3 bg-gray-100 mt-5">
     <el-card shadow="hover" :body-style="{ padding: '20px' }">
       <template #header>
         <div>用户统计</div>

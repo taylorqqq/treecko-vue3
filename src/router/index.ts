@@ -10,7 +10,7 @@ import guard from "./guard";
 import { useRouterStore } from "@/store/router";
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [...routes, ...layoutRoutes],
 });
 export function setupRouter(app: App) {

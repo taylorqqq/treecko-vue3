@@ -3,6 +3,7 @@ import { RouteRecordRaw } from "vue-router";
 export default {
   name: "admin",
   path: "/admin",
+  redirect: "/dashboard",
   component: () => import("@/layout/admin.vue"),
   meta: {
     title: "管理后台",
