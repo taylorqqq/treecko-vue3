@@ -1,10 +1,12 @@
 import { App } from "vue";
 import { setupTailwindcss } from "./tailwindcss";
+import setupElementPlus from "./elementui";
 import _ from "lodash";
 
 export function setupPlugins(app: App) {
   autoRegisterComponents(app);
   setupTailwindcss();
+  setupElementPlus(app);
 }
 
 /**
@@ -12,7 +14,7 @@ export function setupPlugins(app: App) {
  * @param {App} app
  */
 function autoRegisterComponents(app: App) {
-  const files = import.meta.globEager("../components/**/*.vue");
+  const files = import.meta.globEager("../components/**/*.vue") as any;
   for (const path in files) {
     // const component = files[path].default;
     // app.component(component.name, component);

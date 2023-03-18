@@ -1,8 +1,19 @@
 <template>
-  <div>admin</div>
-  <router-view />
+  <div class="admin flex min-h-screen">
+    <MenuComponet />
+    <div class="content flex-1 bg-gray-100">
+      <NavBar />
+      <HistoryLink />
+      <div class="m-5">
+        <router-view />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
+import MenuComponet from "./admin/menu.vue";
+import NavBar from "./admin/navbar.vue";
+import HistoryLink from "./admin/historyLink.vue";
 </script>

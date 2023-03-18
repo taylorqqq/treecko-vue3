@@ -100,7 +100,7 @@ const schema = validate.yup.object({
 //   },
 // };
 
-const handleLogin = async (values) => {
+const handleLogin = async (values: any) => {
   const res = await userLogin(values);
   const { token } = res.data;
   localStorage.setItem("token", token);
@@ -108,7 +108,7 @@ const handleLogin = async (values) => {
     token,
     expire: new Date().getTime() + 1000 * 60 * 60 * 24,
   });
-  router.push({ name: "home" });
+  router.push({ name: "user" });
 };
 </script>
 

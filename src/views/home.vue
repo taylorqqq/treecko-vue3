@@ -1,7 +1,7 @@
 <template>
   <div class="w-screen h-screen bg-red-400 flex justify-center items-center">
     <RouterLink
-      :to="{ name: 'order' }"
+      :to="{ name: 'user' }"
       class="login-button w-28 text-center mr-5"
       >后台管理</RouterLink
     >
