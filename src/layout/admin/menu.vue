@@ -35,6 +35,9 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
 interface IMenuItem {
   name: string;
   icon?: string;
@@ -49,15 +52,15 @@ const menus = reactive<IMenuItem[]>([
     active: true,
     children: [
       {
-        name: "403错误",
+        name: "403",
         active: true,
       },
       {
-        name: "404错误",
+        name: "404",
         active: false,
       },
       {
-        name: "500错误",
+        name: "500",
         active: false,
       },
     ],
@@ -99,6 +102,9 @@ const handeleChoosePMenu = (pmenu: IMenuItem) => {
 const handeleChooseCMenu = (pmenu: IMenuItem, cmenu: IMenuItem) => {
   handeleResetMenu(pmenu);
   cmenu.active = true;
+  router.push({
+    name: cmenu.name,
+  });
 };
 
 /**

@@ -108,7 +108,7 @@ const handleLogin = async (values: any) => {
     token,
     expire: new Date().getTime() + 1000 * 60 * 60 * 24,
   });
-  router.push({ name: "user" });
+  router.push({ name: "home" });
 };
 </script>
 

@@ -5,8 +5,11 @@ const routes = [
     name: "home",
     component: () => import("@/views/home.vue"),
     meta: {
-      requiresAuth: false,
+      title: "主页",
+      show: true,
+      requiresAuth: true,
       guest: false,
+      icon: "fab fa-blogger",
     },
   },
 ] as RouteRecordRaw[];

@@ -1,12 +1,14 @@
 import { App } from "vue";
 import { setupTailwindcss } from "./tailwindcss";
 import setupElementPlus from "./elementui";
+import setupPinia from "./pinia";
 import _ from "lodash";
 
 export function setupPlugins(app: App) {
   autoRegisterComponents(app);
   setupTailwindcss();
   setupElementPlus(app);
+  setupPinia(app);
 }
 
 /**
