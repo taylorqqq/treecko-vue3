@@ -64,9 +64,7 @@ const handeleChooseCMenu = (
   handeleResetMenu(pmenu);
   if (cmenu?.meta) {
     cmenu.meta.isCheck = true;
-    router.push({
-      path: cmenu.path,
-    });
+    router.push(cmenu);
   }
 };
 
