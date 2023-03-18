@@ -20,7 +20,7 @@ export default {
         title: "登录",
         show: true,
         requiresAuth: false,
-        guest: false,
+        guest: true,
         icon: "fab fa-blogger",
       },
     },

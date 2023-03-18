@@ -5,22 +5,29 @@ import { IData } from "@/utils/store";
 class Guard {
   constructor(private router: Router) {}
   public run() {
-    this.router.beforeEach((to, from) => {
-      // 登录验证
-      let token = store.get("token")?.token;
-      if (this.isLogin(to, token) === false) return { name: "login" };
-
-      if (this.isGuest(to, token) === false) return { name: "home" };
-    });
+    this.router.beforeEach(this.beforeEach.bind(this));
   }
 
-  private isGuest(route: RouteLocationNormalized, token?: IData | null) {
-    return Boolean(!route.meta.guest || (route.meta.guest && !token));
+  private beforeEach(
+    to: RouteLocationNormalized,
+    from: RouteLocationNormalized
+  ) {
+    if (this.isLogin(to) === false) return { name: "login" };
+    // if (this.isGuest(to, token) === false) return { name: "home" };
+    if (this.isGuest(to) === false) return from;
   }
 
-  private isLogin(route: RouteLocationNormalized, token?: IData | null) {
+  private getToken(): string | null {
+    return store.get("token")?.token;
+  }
+
+  private isGuest(route: RouteLocationNormalized) {
+    return Boolean(!route.meta.guest || (route.meta.guest && !this.getToken()));
+  }
+
+  private isLogin(route: RouteLocationNormalized) {
     return Boolean(
-      !route.meta.requiresAuth || (route.meta.requiresAuth && token)
+      !route.meta.requiresAuth || (route.meta.requiresAuth && this.getToken())
     );
   }
 }
