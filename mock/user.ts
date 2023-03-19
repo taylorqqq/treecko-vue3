@@ -32,14 +32,14 @@ export default [
         code: 200,
         message: "success",
         data: {
-          name: Mock.Random.cname(),
+          name: "木守",
           age: Mock.Random.integer(18, 60),
           avatar: Mock.Random.image(
             "100x100",
             "#50B347",
             "#FFF",
             "png",
-            "avatar"
+            "木守"
           ),
         },
       };

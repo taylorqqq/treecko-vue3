@@ -6,7 +6,7 @@ import { store } from "@/utils";
 export const useUserStore = defineStore(
   "user",
   () => {
-    const userInfo = ref({});
+    const userInfo = ref({} as InfoInterface);
 
     const getUserInfo = async () => {
       const { data } = await userApi.getInfo();

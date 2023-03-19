@@ -12,24 +12,27 @@
     <div
       class="user flex justify-between items-center relative group cursor-pointer"
     >
+      <!-- :src="@/assets/images/avatar.jpeg" -->
       <img
-        src="@/assets/images/avatar.jpeg"
+        :src="userStore.userInfo.avatar"
         class="w-8 h-8 rounded-full object-cover"
       />
-      <span class="ml-1 text-sm text-gray-600">木守</span>
+      <span class="ml-1 text-sm text-gray-600">{{
+        userStore.userInfo.name
+      }}</span>
       <section
         class="absolute top-full right-0 group-hover:block bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden"
       >
         <div class="flex items-center py-2">
-          <a class="fas fa-ad"></a>
-          <span class="text-xs text-gray-600 ml-2">网站首页</span>
+          <a class="fas fa-file-lines"></a>
+          <span class="text-xs text-gray-600 ml-2">文档资料</span>
         </div>
         <div class="flex items-center py-2">
-          <a class="fas fa-ad"></a>
-          <span class="text-xs text-gray-600 ml-2">网站首页</span>
+          <a class="fas fa-user"></a>
+          <span class="text-xs text-gray-600 ml-2">用户管理</span>
         </div>
         <div class="flex items-center border-t py-3" @click="handleLogOut">
-          <a class="fas fa-ad"></a>
+          <a class="fas fa-sign-out-alt"></a>
           <span class="text-xs text-gray-600 ml-2">退出登录</span>
           <!-- useUserStore -->
         </div>
@@ -42,10 +45,11 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
+const userStore = useUserStore();
 const router = useRouter();
 
 const handleLogOut = async () => {
-  const code = await useUserStore().toLogOut();
+  const code = await userStore.toLogOut();
   if (code == 200) router.push({ name: "home" });
 };
 </script>

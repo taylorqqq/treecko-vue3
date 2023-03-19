@@ -5,7 +5,7 @@ export const getAction = <T>(
   url: string,
   params?: any
 ): Promise<ResponseResult<T>> => {
-  return http.request({
+  return http.request<T>({
     url: url,
     method: "get",
     params,
@@ -17,7 +17,7 @@ export const postAction = <T>(
   url: string,
   data?: any
 ): Promise<ResponseResult<T>> => {
-  return http.request({
+  return http.request<T>({
     url: url,
     method: "post",
     data,
@@ -29,7 +29,7 @@ export const putAction = <T>(
   url: string,
   data?: any
 ): Promise<ResponseResult<T>> => {
-  return http.request({
+  return http.request<T>({
     url: url,
     method: "put",
     data,
@@ -41,7 +41,7 @@ export const deleteAction = <T>(
   url: string,
   data?: any
 ): Promise<ResponseResult<T>> => {
-  return http.request({
+  return http.request<T>({
     url: url,
     method: "delete",
     data,
@@ -53,7 +53,7 @@ export const patchAction = <T>(
   url: string,
   data?: any
 ): Promise<ResponseResult<T>> => {
-  return http.request({
+  return http.request<T>({
     url: url,
     method: "patch",
     data,
@@ -65,7 +65,7 @@ export const uploadFileAction = <T>(
   url: string,
   data?: any
 ): Promise<ResponseResult<T>> => {
-  return http.request({
+  return http.request<T>({
     url: url,
     method: "post",
     data,
@@ -80,7 +80,7 @@ export const downloadFileAction = <T>(
   url: string,
   params?: any
 ): Promise<ResponseResult<T>> => {
-  return http.request({
+  return http.request<T>({
     url: url,
     method: "get",
     params,

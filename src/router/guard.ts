@@ -9,7 +9,7 @@ class Guard {
     this.router.beforeEach(this.beforeEach.bind(this));
   }
 
-  private beforeEach(
+  private async beforeEach(
     to: RouteLocationNormalized,
     from: RouteLocationNormalized
   ) {
@@ -17,7 +17,7 @@ class Guard {
     // if (this.isGuest(to, token) === false) return { name: "home" };
     if (this.isGuest(to) === false) return from;
 
-    this.getUserInfo();
+    await this.getUserInfo();
   }
 
   private getToken(): string | null {
