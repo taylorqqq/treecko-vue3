@@ -11,6 +11,6 @@ interface InfoInterface {
   age: number;
   avatar: string;
 }
-const getInfo = (params: any) => getAction<InfoInterface>("/user/info", params);
+const getInfo = () => getAction<InfoInterface>("/user/info");
 
 export { userLogin, getInfo };

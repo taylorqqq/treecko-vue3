@@ -28,9 +28,10 @@
           <a class="fas fa-ad"></a>
           <span class="text-xs text-gray-600 ml-2">网站首页</span>
         </div>
-        <div class="flex items-center border-t py-3">
+        <div class="flex items-center border-t py-3" @click="handleLogOut">
           <a class="fas fa-ad"></a>
-          <span class="text-xs text-gray-600 ml-2">网站首页</span>
+          <span class="text-xs text-gray-600 ml-2">退出登录</span>
+          <!-- useUserStore -->
         </div>
       </section>
     </div>
@@ -39,6 +40,14 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useUserStore } from "@/store/user";
+const router = useRouter();
+
+const handleLogOut = async () => {
+  const code = await useUserStore().toLogOut();
+  if (code == 200) router.push({ name: "home" });
+};
 </script>
 
 <style lang="scss" scoped></style>

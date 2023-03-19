@@ -15,6 +15,16 @@ export default [
     },
   },
   {
+    url: "/api/user/logOut",
+    method: "post",
+    response: () => {
+      return {
+        code: 200,
+        message: "success",
+      };
+    },
+  },
+  {
     url: "/api/user/info",
     method: "get",
     response: () => {

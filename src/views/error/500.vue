@@ -4,10 +4,12 @@
       <div
         class="w-9/12 m-auto py-16 min-h-screen flex items-center justify-center"
       >
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg pb-8">
+        <div
+          class="bg-white shadow overflow-hidden sm:rounded-lg pb-8 md:w-[720px]"
+        >
           <div class="border-t border-gray-200 text-center pt-8">
             <h1 class="text-9xl font-bold text-purple-400">500</h1>
-            <h1 class="text-6xl font-medium py-8">哎呀！内部服务器错误</h1>
+            <h1 class="text-6xl font-medium py-8">内部服务器错误</h1>
             <p class="text-2xl pb-8 px-12 font-medium">
               服务器无法完成您的请求或服务器故障，请稍后再尝试
             </p>

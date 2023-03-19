@@ -3,7 +3,7 @@ import http from "@/plugins/axios";
 // get请求
 export const getAction = <T>(
   url: string,
-  params: any
+  params?: any
 ): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,
@@ -15,7 +15,7 @@ export const getAction = <T>(
 // post请求
 export const postAction = <T>(
   url: string,
-  data: any
+  data?: any
 ): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,
@@ -27,7 +27,7 @@ export const postAction = <T>(
 // put请求
 export const putAction = <T>(
   url: string,
-  data: any
+  data?: any
 ): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,
@@ -39,7 +39,7 @@ export const putAction = <T>(
 // delete请求
 export const deleteAction = <T>(
   url: string,
-  data: any
+  data?: any
 ): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,
@@ -51,7 +51,7 @@ export const deleteAction = <T>(
 // patch请求
 export const patchAction = <T>(
   url: string,
-  data: any
+  data?: any
 ): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,
@@ -63,7 +63,7 @@ export const patchAction = <T>(
 // uploadFile请求
 export const uploadFileAction = <T>(
   url: string,
-  data: any
+  data?: any
 ): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,
@@ -78,7 +78,7 @@ export const uploadFileAction = <T>(
 // downloadFile请求
 export const downloadFileAction = <T>(
   url: string,
-  params: any
+  params?: any
 ): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,

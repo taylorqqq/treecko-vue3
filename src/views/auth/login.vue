@@ -63,14 +63,10 @@
 import { ref } from "vue";
 import validate from "@/plugins/validate";
 import "@/style/global.scss";
-// import { userLogin } from "@/api/user";
-import userApi from "@/api/UserApi";
 import { useUserStore } from "@/store/user";
-import { store } from "@/utils";
 import { useRouter } from "vue-router";
 const router = useRouter();
 const { Form, Field, ErrorMessage } = validate;
-const { getUserInfo } = useUserStore();
 
 /**
  * 1. 使用yup验证
@@ -104,15 +100,8 @@ const schema = validate.yup.object({
 // };
 
 const handleLogin = async (values: any) => {
-  const res = await userApi.userLogin(values);
-  const { token } = res.data;
-  localStorage.setItem("token", token);
-  getUserInfo({});
-  store.set("token", {
-    token,
-    expire: new Date().getTime() + 1000 * 60 * 60 * 24,
-  });
-  router.push({ name: "home" });
+  const code = await useUserStore().toLogin(values);
+  if (code == 200) router.push({ name: "home" });
 };
 </script>
 
