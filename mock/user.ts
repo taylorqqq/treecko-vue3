@@ -10,10 +10,27 @@ export default [
         message: "success",
         data: {
           token: Mock.Random.guid(),
-          userInfo: {
-            name: Mock.Random.cname(),
-            age: Mock.Random.integer(18, 60),
-          },
+        },
+      };
+    },
+  },
+  {
+    url: "/api/user/info",
+    method: "get",
+    response: () => {
+      return {
+        code: 200,
+        message: "success",
+        data: {
+          name: Mock.Random.cname(),
+          age: Mock.Random.integer(18, 60),
+          avatar: Mock.Random.image(
+            "100x100",
+            "#50B347",
+            "#FFF",
+            "png",
+            "avatar"
+          ),
         },
       };
     },

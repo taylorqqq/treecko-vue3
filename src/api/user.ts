@@ -6,4 +6,11 @@ interface LoginInterface {
 const userLogin = (params: any) =>
   postAction<LoginInterface>("/user/login", params);
 
-export { userLogin };
+interface InfoInterface {
+  name: string;
+  age: number;
+  avatar: string;
+}
+const getInfo = (params: any) => getAction<InfoInterface>("/user/info", params);
+
+export { userLogin, getInfo };

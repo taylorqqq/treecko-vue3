@@ -1,9 +1,20 @@
-import { getAction } from "@/plugins/axios/request";
+import { getAction, postAction } from "@/plugins/axios/request";
 
-// 类
+interface LoginInterface {
+  token: string;
+}
+interface InfoInterface {
+  name: string;
+  age: number;
+  avatar: string;
+}
 class UserApi {
-  getUserInfo(data: any) {
-    return getAction("/get", data);
+  userLogin(data: any) {
+    return postAction<LoginInterface>("/user/login", data);
+  }
+
+  getInfo(params: any) {
+    return getAction<InfoInterface>("/user/info", params);
   }
 }
 
