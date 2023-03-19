@@ -1,7 +1,8 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import userApi from "@/api/UserApi";
-import { store } from "@/utils";
+import { local } from "@/utils";
+import { CacheEnum } from "@/enum/cacheEnum";
 
 export const useUserStore = defineStore(
   "user",
@@ -19,7 +20,7 @@ export const useUserStore = defineStore(
           .userLogin(params)
           .then((res) => {
             const { token } = res.data;
-            store.set("token", {
+            local.set(CacheEnum.TOKEN_KEY, {
               token,
               expire: new Date().getTime() + 1000 * 60 * 60 * 24,
             });
@@ -36,7 +37,8 @@ export const useUserStore = defineStore(
         userApi
           .userLogOut()
           .then((res) => {
-            store.remove("token");
+            // local.remove(CacheEnum.TOKEN_KEY);
+            localStorage.clear();
             resolve(res.code);
           })
           .catch((err) => {

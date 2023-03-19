@@ -1,4 +1,4 @@
 import envs from "./env";
-import store from "./store";
+import local from "./local";
 
-export { envs, store };
+export { envs, local };

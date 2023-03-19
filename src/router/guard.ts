@@ -1,7 +1,8 @@
 import { RouteLocationNormalized, Router } from "vue-router";
-import { store } from "@/utils";
-import { IData } from "@/utils/store";
+import { local } from "@/utils";
+import { IData } from "@/utils/local";
 import { useUserStore } from "@/store/user";
+import { CacheEnum } from "@/enum/cacheEnum";
 
 class Guard {
   constructor(private router: Router) {}
@@ -14,14 +15,14 @@ class Guard {
     from: RouteLocationNormalized
   ) {
     if (this.isLogin(to) === false) return { name: "login" };
-    // if (this.isGuest(to, token) === false) return { name: "home" };
+    // if (this.isGuest(to) === false) return { name: "home" };
     if (this.isGuest(to) === false) return from;
 
     await this.getUserInfo();
   }
 
   private getToken(): string | null {
-    return store.get("token")?.token;
+    return local.get(CacheEnum.TOKEN_KEY);
   }
 
   private getUserInfo = () => {

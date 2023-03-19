@@ -3,7 +3,7 @@ import { RouteRecordRaw } from "vue-router";
 export default {
   name: "error",
   path: "/error",
-  component: () => import("@/layout/admin.vue"),
+  component: () => import("@/layout/error.vue"),
   meta: {
     title: "错误页面",
     show: true,
