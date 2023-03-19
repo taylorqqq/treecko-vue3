@@ -1,38 +1,9 @@
-// import { getAction } from "@/plugins/axios/request";
-
-// interface User {
-//   name: string;
-// }
-
-// const getUserInfo = (params: any) => getAction("/get", params);
-
-// export { getUserInfo };
-
-import http from "@/plugins/axios";
-
-interface userinterface {
-  name: string;
-  age: number;
-}
-
-const getUserInfo = (params: any) => {
-  return http.request<userinterface>({
-    url: "/user/info",
-    method: "get",
-    params,
-  });
-};
-
-interface loginInterface {
+import { getAction, postAction } from "@/plugins/axios/request";
+interface LoginInterface {
   token: string;
 }
 
-const userLogin = (params: any) => {
-  return http.request<loginInterface>({
-    url: "/user/login",
-    method: "post",
-    params,
-  });
-};
+const userLogin = (params: any) =>
+  postAction<LoginInterface>("/user/login", params);
 
-export { getUserInfo, userLogin };
+export { userLogin };

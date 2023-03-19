@@ -1,7 +1,10 @@
 import http from "@/plugins/axios";
 
 // get请求
-export const getAction = (url: string, params: any) => {
+export const getAction = <T>(
+  url: string,
+  params: any
+): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,
     method: "get",
@@ -10,7 +13,10 @@ export const getAction = (url: string, params: any) => {
 };
 
 // post请求
-export const postAction = (url: string, data: any) => {
+export const postAction = <T>(
+  url: string,
+  data: any
+): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,
     method: "post",
@@ -19,7 +25,10 @@ export const postAction = (url: string, data: any) => {
 };
 
 // put请求
-export const putAction = (url: string, data: any) => {
+export const putAction = <T>(
+  url: string,
+  data: any
+): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,
     method: "put",
@@ -28,7 +37,10 @@ export const putAction = (url: string, data: any) => {
 };
 
 // delete请求
-export const deleteAction = (url: string, data: any) => {
+export const deleteAction = <T>(
+  url: string,
+  data: any
+): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,
     method: "delete",
@@ -37,7 +49,10 @@ export const deleteAction = (url: string, data: any) => {
 };
 
 // patch请求
-export const patchAction = (url: string, data: any) => {
+export const patchAction = <T>(
+  url: string,
+  data: any
+): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,
     method: "patch",
@@ -46,7 +61,10 @@ export const patchAction = (url: string, data: any) => {
 };
 
 // uploadFile请求
-export const uploadFileAction = (url: string, data: any) => {
+export const uploadFileAction = <T>(
+  url: string,
+  data: any
+): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,
     method: "post",
@@ -58,21 +76,14 @@ export const uploadFileAction = (url: string, data: any) => {
 };
 
 // downloadFile请求
-export const downloadFileAction = (url: string, params: any) => {
+export const downloadFileAction = <T>(
+  url: string,
+  params: any
+): Promise<ResponseResult<T>> => {
   return http.request({
     url: url,
     method: "get",
     params,
     responseType: "blob",
   });
-};
-
-export default {
-  getAction,
-  postAction,
-  putAction,
-  deleteAction,
-  patchAction,
-  uploadFileAction,
-  downloadFileAction,
 };
