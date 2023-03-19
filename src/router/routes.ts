@@ -24,6 +24,18 @@ const routes = [
       icon: "fab fa-blogger",
     },
   },
+  {
+    path: "/:any(.*)",
+    name: "notFound",
+    component: () => import("@/views/error/404.vue"),
+    meta: {
+      title: "404",
+      show: true,
+      requiresAuth: false,
+      guest: false,
+      icon: "fab fa-blogger",
+    },
+  },
 ] as RouteRecordRaw[];
 
 export default routes;

@@ -5,9 +5,19 @@ export interface IData {
 
 export default {
   set(key: string, data: any, expire?: number): void {
-    let cacheData: IData = { ...data };
-    if (expire) {
-      cacheData.expire = new Date().getTime() + data.expire * 1000;
+    if (!data) return;
+    let type = typeof data;
+    let cacheData: IData;
+    if (type !== "string" && type !== "number" && type !== "boolean") {
+      cacheData = {
+        data: JSON.stringify(data),
+        expire: new Date().getTime() + 60 * 60 * 1000 * 24,
+      };
+    } else {
+      cacheData = {
+        data,
+        expire: new Date().getTime() + 60 * 60 * 1000 * 24,
+      };
     }
     localStorage.setItem(key, JSON.stringify(cacheData));
   },
@@ -21,8 +31,7 @@ export default {
       localStorage.removeItem(key);
       return null;
     }
-    const result = Object.values(cacheData).find((item) => item !== expire);
-    return result;
+    return cacheData.data;
   },
 
   remove(key: string) {

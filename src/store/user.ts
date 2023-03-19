@@ -20,10 +20,11 @@ export const useUserStore = defineStore(
           .userLogin(params)
           .then((res) => {
             const { token } = res.data;
-            local.set(CacheEnum.TOKEN_KEY, {
+            local.set(
+              CacheEnum.TOKEN_KEY,
               token,
-              expire: new Date().getTime() + 1000 * 60 * 60 * 24,
-            });
+              new Date().getTime() + 1000 * 60 * 60 * 24
+            );
             resolve(res.code);
           })
           .catch((err) => {
@@ -39,6 +40,7 @@ export const useUserStore = defineStore(
           .then((res) => {
             // local.remove(CacheEnum.TOKEN_KEY);
             localStorage.clear();
+            userInfo.value = {} as InfoInterface;
             resolve(res.code);
           })
           .catch((err) => {

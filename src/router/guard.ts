@@ -36,9 +36,14 @@ class Guard {
   }
 
   private isLogin(route: RouteLocationNormalized) {
-    return Boolean(
+    const state = Boolean(
       !route.meta.requiresAuth || (route.meta.requiresAuth && this.getToken())
     );
+    if (state == false) {
+      local.set(CacheEnum.REDIRECT_ROUTE_KEY, route.name);
+    }
+
+    return state;
   }
 }
 

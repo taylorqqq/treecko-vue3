@@ -65,6 +65,8 @@ import validate from "@/plugins/validate";
 import "@/style/global.scss";
 import { useUserStore } from "@/store/user";
 import { useRouter } from "vue-router";
+import { local } from "@/utils";
+import { CacheEnum } from "@/enum/cacheEnum";
 const router = useRouter();
 const { Form, Field, ErrorMessage } = validate;
 
@@ -101,7 +103,9 @@ const schema = validate.yup.object({
 
 const handleLogin = async (values: any) => {
   const code = await useUserStore().toLogin(values);
-  if (code == 200) router.push({ name: "home" });
+  const name = local.get(CacheEnum.REDIRECT_ROUTE_KEY) ?? "home";
+  if (code == 200) router.push({ name });
+  local.remove(CacheEnum.REDIRECT_ROUTE_KEY);
 };
 </script>
 
