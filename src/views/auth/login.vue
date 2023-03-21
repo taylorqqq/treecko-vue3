@@ -63,7 +63,7 @@
 import { ref } from "vue";
 import validate from "@/plugins/validate";
 import "@/style/global.scss";
-import { useUserStore } from "@/store/user";
+import { useUserStore } from "@/store/userStore";
 import { useRouter } from "vue-router";
 import { local } from "@/utils";
 import { CacheEnum } from "@/enum/cacheEnum";

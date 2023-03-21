@@ -1,7 +1,7 @@
 import { RouteLocationNormalized, Router } from "vue-router";
 import { local } from "@/utils";
 import { IData } from "@/utils/local";
-import { useUserStore } from "@/store/user";
+import { useUserStore } from "@/store/userStore";
 import { CacheEnum } from "@/enum/cacheEnum";
 
 class Guard {

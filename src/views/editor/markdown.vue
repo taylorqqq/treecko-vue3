@@ -1,9 +1,5 @@
-<template>
-  <div>markdown编辑器</div>
-</template>
+<template>markdown</template>
 
-<script lang="ts" setup>
-import { ref } from "vue";
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped></style>

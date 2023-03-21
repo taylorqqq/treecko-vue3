@@ -36,7 +36,7 @@
 <script lang="ts" setup>
 import { ref, reactive } from "vue";
 import { useRouter, RouteRecordNormalized, RouteRecordRaw } from "vue-router";
-import { useRouterStore } from "@/store/router";
+import { useRouterStore } from "@/store/menuStore";
 const router = useRouter();
 const { routes: menus } = useRouterStore();
 

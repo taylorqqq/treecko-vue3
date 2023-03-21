@@ -12,9 +12,9 @@
     <div
       class="user flex justify-between items-center relative group cursor-pointer"
     >
-      <!-- :src="@/assets/images/avatar.jpeg" -->
+      <!-- :src="userStore.userInfo.avatar" -->
       <img
-        :src="userStore.userInfo.avatar"
+        src="@/assets/images/avatar.jpeg"
         class="w-8 h-8 rounded-full object-cover"
       />
       <span class="ml-1 text-sm text-gray-600">{{
@@ -44,7 +44,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { useUserStore } from "@/store/user";
+import { useUserStore } from "@/store/userStore";
 const userStore = useUserStore();
 const router = useRouter();
 
