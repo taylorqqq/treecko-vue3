@@ -1,5 +1,4 @@
 <template>
-  <div>member</div>
   <router-view />
 </template>
 

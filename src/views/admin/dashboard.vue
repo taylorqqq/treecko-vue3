@@ -1,47 +1,48 @@
 <template>
-  <div class="grid md:grid-cols-4 gap-3">
-    <el-card
-      class="cursor-pointer"
-      shadow="hover"
-      :body-style="{ padding: '20px' }"
-      v-for="card in cardList"
-      :ke="card.id"
-    >
-      <template #header>
-        <div class="flex justify-between items-center">
-          {{ card.title }}
-          <el-tag type="danger" size="small" effect="dark">月</el-tag>
-        </div>
-      </template>
+  <div>
+    <div class="grid md:grid-cols-4 gap-3">
+      <el-card
+        class="cursor-pointer"
+        shadow="hover"
+        :body-style="{ padding: '20px' }"
+        v-for="card in cardList"
+        :ke="card.id"
+      >
+        <template #header>
+          <div class="flex justify-between items-center">
+            {{ card.title }}
+            <el-tag type="danger" size="small" effect="dark">月</el-tag>
+          </div>
+        </template>
 
-      <section class="flex justify-between items-center mt-3">
-        <span class="text-3xl">{{ card.price }}</span>
-        <i
-          class="text-violet-500 text-3xl"
-          :class="[card.icon, card.iconColor]"
-        ></i>
-      </section>
+        <section class="flex justify-between items-center mt-3">
+          <span class="text-3xl">{{ card.price }}</span>
+          <i
+            class="text-violet-500 text-3xl"
+            :class="[card.icon, card.iconColor]"
+          ></i>
+        </section>
 
-      <section class="flex justify-between items-center mt-6 text-base">
-        <span>{{ card.totalTitle }}</span>
-        <span class="text-gray-500">{{ card.total }}</span>
-      </section>
-    </el-card>
-  </div>
-
-  <div class="grid md:grid-flow-col md:grid-cols-2 gap-3 bg-gray-100 mt-5">
-    <el-card shadow="hover" :body-style="{ padding: '20px' }">
-      <template #header>
-        <div>用户统计</div>
-      </template>
-      <div id="main" class="h-72"></div>
-    </el-card>
-    <el-card shadow="hover" :body-style="{ padding: '20px' }">
-      <template #header>
-        <div>销售量</div>
-      </template>
-      <div id="main2" class="h-72"></div>
-    </el-card>
+        <section class="flex justify-between items-center mt-6 text-base">
+          <span>{{ card.totalTitle }}</span>
+          <span class="text-gray-500">{{ card.total }}</span>
+        </section>
+      </el-card>
+    </div>
+    <div class="grid md:grid-flow-col md:grid-cols-2 gap-3 bg-gray-100 mt-5">
+      <el-card shadow="hover" :body-style="{ padding: '20px' }">
+        <template #header>
+          <div>用户统计</div>
+        </template>
+        <div id="main" class="h-72"></div>
+      </el-card>
+      <el-card shadow="hover" :body-style="{ padding: '20px' }">
+        <template #header>
+          <div>销售量</div>
+        </template>
+        <div id="main2" class="h-72"></div>
+      </el-card>
+    </div>
   </div>
 </template>
 
