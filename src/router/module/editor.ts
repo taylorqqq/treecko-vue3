@@ -8,7 +8,7 @@ export default {
     requiresAuth: true,
     guest: false,
     menu: {
-      icon: "fab fa-blogger",
+      icon: "fas fa-pen-nib",
       title: "编辑器",
       isActive: false,
     },

@@ -22,7 +22,7 @@
         userStore.userInfo.name
       }}</span>
       <section
-        class="absolute top-full right-0 group-hover:block bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden"
+        class="absolute z-10 top-full right-0 group-hover:block bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden"
       >
         <div class="flex items-center py-2">
           <a class="fas fa-file-lines"></a>
@@ -52,7 +52,7 @@ const route = useRoute();
 const levelList = ref(<RouteLocationMatched[]>[]);
 
 const getLevelList = () => {
-  levelList.value = route.matched.filter((item) => item.name);
+  levelList.value = route.matched.filter((item) => item.name && item.meta.menu);
 };
 
 onBeforeMount(() => {

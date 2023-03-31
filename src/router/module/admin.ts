@@ -8,11 +8,11 @@ export default {
   meta: {
     requiresAuth: true,
     guest: false,
-    menu: {
-      icon: "fab fa-blogger",
-      title: "管理后台",
-      isActive: false,
-    },
+    // menu: {
+    //   icon: "fab fa-blogger",
+    //   title: "管理后台",
+    //   isActive: false,
+    // },
   },
   children: [
     {

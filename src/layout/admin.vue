@@ -1,16 +1,24 @@
 <template>
-  <div class="admin flex min-h-screen">
+  <div class="admin w-screen h-screen grid grid-cols-[auto_1fr]">
     <MenuComponet />
-    <div class="content flex-1 bg-gray-100">
-      <NavBar />
-      <HistoryLink />
-      <div class="m-5">
-        <router-view #default="{ Component }">
-          <!-- <Transition
-            enter-active-class="animate__animated animate__bounceOutRight"
-          > -->
-          <component :is="Component"></component>
-          <!-- </Transition> -->
+    <div class="content bg-gray-100 grid grid-rows-[auto_1fr]">
+      <div>
+        <NavBar />
+        <HistoryLink />
+      </div>
+      <div class="m-3 relative overflow-y-auto">
+        <router-view #default="{ Component, route }">
+          <Transition
+            class="animate__animated"
+            :enter-active-class="
+              route.meta.enterClass ?? 'animate__fadeInRight'
+            "
+            :leave-active-class="
+              route.meta.leaveClass ?? 'animate__fadeOutLeft'
+            "
+          >
+            <component :is="Component" class="absolute w-full"></component>
+          </Transition>
         </router-view>
       </div>
     </div>
@@ -18,8 +26,20 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from "vue";
 import MenuComponet from "./admin/menu.vue";
 import NavBar from "./admin/navbar.vue";
 import HistoryLink from "./admin/historyLink.vue";
+import { useMenuStore } from "@/store/menuStore";
+import { useRoute } from "vue-router";
+import { watch } from "vue";
+const route = useRoute();
+
+useMenuStore().init();
+watch(
+  route,
+  () => {
+    useMenuStore().getActiveMenu();
+  },
+  { immediate: true }
+);
 </script>

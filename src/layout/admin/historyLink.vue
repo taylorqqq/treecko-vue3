@@ -1,5 +1,5 @@
 <template>
-  <div class="hidden md:block px-5 py-2 bg-gray-50 border-t border-b shadow-md">
+  <div class="hidden md:block px-3 py-2 bg-gray-50 border-t border-b shadow-md">
     <div class="grid grid-flow-col gap-2 justify-start">
       <span
         v-for="(menu, index) in historyMenu"
@@ -11,7 +11,7 @@
           {{ menu.title }}
         </router-link>
         <i
-          class="fas fa-times ml-1"
+          class="fas fa-times ml-3"
           @click.self="useMenuStore().removeHistoryMenu(menu)"
         ></i>
       </span>

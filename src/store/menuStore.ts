@@ -11,7 +11,7 @@ export const useMenuStore = defineStore("menu", {
   },
   actions: {
     init() {
-      this.getMenyByRoutes();
+      this.getMenuyByRoutes();
     },
     addHistoryMenu(route: RouteLocationNormalized) {
       if (!route.meta?.menu) return;
@@ -35,8 +35,27 @@ export const useMenuStore = defineStore("menu", {
         router.push({ name: this.historyMenu[index - 1].route });
       }
     },
+    // 获取活跃菜单
+    getActiveMenu() {
+      const route = router.currentRoute.value;
+      this.menus.forEach((menu) => {
+        menu.isActive = false;
+        let isChild = menu.children?.some(
+          (child) => child.route === route.name
+        );
+        if (isChild) {
+          menu.isActive = true;
+        }
+        menu.children?.forEach((child) => {
+          child.isActive = false;
+          if (child.route === route.name) {
+            child.isActive = true;
+          }
+        });
+      });
+    },
     // 根据路由获取菜单
-    getMenyByRoutes() {
+    getMenuyByRoutes() {
       this.menus = router
         .getRoutes()
         .filter((route) => route.meta?.menu && route?.children?.length)

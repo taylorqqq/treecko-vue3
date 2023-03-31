@@ -7,6 +7,29 @@
 
     <!-- 菜单 -->
     <div class="left-container text-white">
+      <dl>
+        <dt
+          @click="
+            () => {
+              $router.push('/dashboard');
+              menus.forEach((item) => {
+                item.isActive = false;
+                if (item.children && item.children.length > 0) {
+                  item.children.forEach((citem) => {
+                    citem.isActive = false;
+                  });
+                }
+              });
+            }
+          "
+          :class="{ active: $route.path === '/dashboard' }"
+        >
+          <section>
+            <i class="fas fa-home"></i>
+            <span>dashboard</span>
+          </section>
+        </dt>
+      </dl>
       <dl v-for="(pmenu, index) in menus" :key="index">
         <dt @click="handeleChoosePMenu(pmenu)">
           <section>
@@ -37,8 +60,6 @@
 import { useMenuStore } from "@/store/menuStore";
 import router from "@/router";
 const { menus } = useMenuStore();
-
-useMenuStore().init();
 
 /**
  * @description 选择菜单
@@ -90,7 +111,7 @@ const handeleResetMenu = (menu: IMenu) => {
         }
         section {
           i {
-            @apply text-[20px];
+            @apply text-[16px];
           }
         }
       }
@@ -99,6 +120,12 @@ const handeleResetMenu = (menu: IMenu) => {
         @apply py-3 pl-4 my-2 rounded-md cursor-pointer bg-gray-700 hover:bg-blue-500 duration-300;
         &.active {
           @apply bg-blue-800 hover:bg-blue-500;
+        }
+      }
+
+      dt {
+        &.active {
+          @apply bg-blue-800;
         }
       }
     }

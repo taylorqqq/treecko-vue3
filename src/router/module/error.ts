@@ -8,7 +8,7 @@ export default {
     requiresAuth: false,
     guest: false,
     menu: {
-      icon: "fab fa-blogger",
+      icon: "fas fa-bug",
       title: "错误页面",
       isActive: false,
     },

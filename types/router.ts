@@ -6,5 +6,7 @@ declare module "vue-router" {
     guest?: boolean;
     permission?: string[];
     menu?: IMenu;
+    enterClass?: string;
+    leaveClass?: string;
   }
 }
