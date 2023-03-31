@@ -1,12 +1,13 @@
 <template>
   <div class="bg-white p-4 flex justify-between items-center">
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
       <el-breadcrumb-item
-        ><a href="/">promotion management</a></el-breadcrumb-item
+        v-for="(route, index) in levelList"
+        :key="index"
+        :to="index === 0 ? undefined : { path: route.path }"
       >
-      <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-      <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
+        {{ route.meta.menu?.title }}
+      </el-breadcrumb-item>
     </el-breadcrumb>
 
     <div
@@ -34,7 +35,6 @@
         <div class="flex items-center border-t py-3" @click="handleLogOut">
           <a class="fas fa-sign-out-alt"></a>
           <span class="text-xs text-gray-600 ml-2">退出登录</span>
-          <!-- useUserStore -->
         </div>
       </section>
     </div>
@@ -42,11 +42,26 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { ref, onBeforeMount } from "vue";
+import { useRouter, useRoute, RouteLocationMatched } from "vue-router";
 import { useUserStore } from "@/store/userStore";
 const userStore = useUserStore();
 const router = useRouter();
+const route = useRoute();
+
+const levelList = ref(<RouteLocationMatched[]>[]);
+
+const getLevelList = () => {
+  levelList.value = route.matched.filter((item) => item.name);
+};
+
+onBeforeMount(() => {
+  getLevelList();
+});
+
+router.afterEach(() => {
+  getLevelList();
+});
 
 const handleLogOut = async () => {
   const code = await userStore.toLogOut();
