@@ -5,11 +5,13 @@ export default {
   path: "/auth",
   component: () => import("@/layout/auth.vue"),
   meta: {
-    title: "操作页面",
-    show: true,
     requiresAuth: false,
     guest: false,
-    icon: "fab fa-blogger",
+    menu: {
+      icon: "fab fa-blogger",
+      title: "操作页面",
+      isActive: false,
+    },
   },
   children: [
     {
@@ -17,11 +19,13 @@ export default {
       path: "/login",
       component: () => import("@/views/auth/login.vue"),
       meta: {
-        title: "登录",
-        show: true,
         requiresAuth: false,
         guest: true,
-        icon: "fab fa-blogger",
+        menu: {
+          icon: "fab fa-blogger",
+          title: "登录",
+          isActive: false,
+        },
       },
     },
   ],

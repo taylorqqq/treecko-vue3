@@ -6,12 +6,13 @@ export default {
   redirect: "/dashboard",
   component: () => import("@/layout/admin.vue"),
   meta: {
-    title: "管理后台",
-    show: true,
     requiresAuth: true,
     guest: false,
-    icon: "fab fa-blogger",
-    isCheck: true,
+    menu: {
+      icon: "fab fa-blogger",
+      title: "管理后台",
+      isActive: false,
+    },
   },
   children: [
     {
@@ -19,12 +20,13 @@ export default {
       path: "/dashboard",
       component: () => import("@/views/admin/dashboard.vue"),
       meta: {
-        title: "首页",
-        show: true,
         requiresAuth: true,
         guest: false,
-        icon: "fab fa-blogger",
-        isCheck: true,
+        menu: {
+          icon: "fab fa-blogger",
+          title: "首页",
+          isActive: false,
+        },
       },
     },
   ],

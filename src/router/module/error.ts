@@ -5,11 +5,13 @@ export default {
   path: "/error",
   component: () => import("@/layout/error.vue"),
   meta: {
-    title: "错误页面",
-    show: true,
     requiresAuth: false,
     guest: false,
-    icon: "fab fa-blogger",
+    menu: {
+      icon: "fab fa-blogger",
+      title: "错误页面",
+      isActive: false,
+    },
   },
   children: [
     {
@@ -17,11 +19,13 @@ export default {
       path: "/403",
       component: () => import("@/views/error/403.vue"),
       meta: {
-        title: "403",
-        show: true,
         requiresAuth: false,
         guest: false,
-        icon: "fab fa-blogger",
+        menu: {
+          icon: "fab fa-blogger",
+          title: "403",
+          isActive: false,
+        },
       },
     },
     {
@@ -29,11 +33,13 @@ export default {
       path: "/404",
       component: () => import("@/views/error/404.vue"),
       meta: {
-        title: "404",
-        show: true,
         requiresAuth: false,
         guest: false,
-        icon: "fab fa-blogger",
+        menu: {
+          icon: "fab fa-blogger",
+          title: "404",
+          isActive: false,
+        },
       },
     },
     {
@@ -41,11 +47,13 @@ export default {
       path: "/500",
       component: () => import("@/views/error/500.vue"),
       meta: {
-        title: "500",
-        show: true,
         requiresAuth: false,
         guest: false,
-        icon: "fab fa-blogger",
+        menu: {
+          icon: "fab fa-blogger",
+          title: "500",
+          isActive: false,
+        },
       },
     },
   ],

@@ -1,7 +1,8 @@
 interface Menu {
-  title: string;
+  title?: string;
   icon?: string;
-  isCheck?: boolean;
+  isActive?: boolean;
+  route?: string;
 }
 interface IMenu extends Menu {
   children?: IMenu[];

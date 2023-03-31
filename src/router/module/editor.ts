@@ -5,11 +5,13 @@ export default {
   path: "/editor",
   component: () => import("@/layout/admin.vue"),
   meta: {
-    title: "编辑器",
-    show: true,
     requiresAuth: true,
     guest: false,
-    icon: "fab fa-blogger",
+    menu: {
+      icon: "fab fa-blogger",
+      title: "编辑器",
+      isActive: false,
+    },
   },
   children: [
     {
@@ -17,11 +19,13 @@ export default {
       path: "/markdown",
       component: () => import("@/views/editor/markdown.vue"),
       meta: {
-        title: "Markdown",
-        show: true,
         requiresAuth: true,
         guest: false,
-        icon: "fab fa-blogger",
+        menu: {
+          icon: "fab fa-blogger",
+          title: "Markdown",
+          isActive: false,
+        },
       },
     },
   ],

@@ -10,23 +10,23 @@
       <dl v-for="(pmenu, index) in menus" :key="index">
         <dt @click="handeleChoosePMenu(pmenu)">
           <section>
-            <i :class="pmenu.meta?.icon"></i>
-            <span>{{ pmenu.meta?.title }}</span>
+            <i :class="pmenu?.icon"></i>
+            <span>{{ pmenu?.title }}</span>
           </section>
           <section>
             <i
               class="fas fa-angle-down duration-100"
-              :class="{ 'rotate-180': pmenu.meta?.isCheck }"
+              :class="{ 'rotate-180': pmenu?.isActive }"
             ></i>
           </section>
         </dt>
         <dd
-          v-show="pmenu.meta?.isCheck"
+          v-show="pmenu?.isActive"
           v-for="(cmenu, cindex) in pmenu.children"
-          :class="{ active: cmenu.meta?.isCheck }"
+          :class="{ active: cmenu?.isActive }"
           @click="handeleChooseCMenu(pmenu, cmenu)"
         >
-          {{ cmenu.meta?.title }}
+          {{ cmenu?.title }}
         </dd>
       </dl>
     </div>
@@ -34,53 +34,39 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from "vue";
-import { useRouter, RouteRecordNormalized, RouteRecordRaw } from "vue-router";
 import { useRouterStore } from "@/store/menuStore";
-const router = useRouter();
-const { routes: menus } = useRouterStore();
+import router from "@/router";
+useRouterStore().init();
+const { menus } = useRouterStore();
+console.log(menus);
 
 /**
  * @description 选择菜单
  */
-const handeleChoosePMenu = (pmenu: RouteRecordNormalized) => {
-  // handeleResetMenu(pmenu);
-  pmenu.meta.isCheck = !pmenu.meta.isCheck;
-  // menus.forEach((item) => {
-  //   if (item.meta.title == pmenu.meta.title) {
-  //     if (item?.children && item?.children.length > 0) {
-  //       handeleChooseCMenu(item, item.children[0]);
-  //     }
-  //   }
-  // });
+const handeleChoosePMenu = (pmenu: IMenu) => {
+  pmenu.isActive = !pmenu.isActive;
 };
 /**
  * @description 选择子菜单
  */
-const handeleChooseCMenu = (
-  pmenu: RouteRecordNormalized,
-  cmenu: RouteRecordRaw
-) => {
+const handeleChooseCMenu = (pmenu: IMenu, cmenu: IMenu) => {
   handeleResetMenu(pmenu);
-  if (cmenu?.meta) {
-    cmenu.meta.isCheck = true;
-    router.push(cmenu);
-  }
+  cmenu.isActive = true;
+  router.push({
+    name: cmenu.route,
+  });
 };
 
 /**
  * @description 状态重置
- *
  */
-const handeleResetMenu = (menu: RouteRecordNormalized) => {
+const handeleResetMenu = (menu: IMenu) => {
   menus.forEach((pmenu) => {
-    if (menu.meta.title != pmenu.meta.title) {
-      pmenu.meta.isCheck = false;
+    if (menu.title != pmenu.title) {
+      pmenu.isActive = false;
     }
     pmenu.children?.forEach((cmenu) => {
-      if (cmenu?.meta) {
-        cmenu.meta.isCheck = false;
-      }
+      cmenu.isActive = false;
     });
   });
 };

@@ -1,28 +1,33 @@
-import { ref, computed } from "vue";
 import { defineStore } from "pinia";
-import { useRouter } from "vue-router";
+import router from "@/router";
 
-export const useRouterStore = defineStore(
-  "router",
-  () => {
-    const routes = getRoutes();
-
-    return { routes };
+export const useRouterStore = defineStore("menu", {
+  state: () => {
+    return {
+      menus: [] as IMenu[],
+      historyMenu: [] as IMenu[],
+    };
   },
-  {
-    persist: true,
-  }
-);
-
-const getRoutes = () => {
-  const router = useRouter();
-  const routes = router
-    .getRoutes()
-    .map((route) => {
-      route.children = route.children?.filter((child) => child.meta?.show);
-      return route;
-    })
-    .filter((route) => route?.children?.length && route.meta?.show);
-
-  return routes;
-};
+  actions: {
+    init() {
+      this.getMenyByRoutes();
+    },
+    // 根据路由获取菜单
+    getMenyByRoutes() {
+      this.menus = router
+        .getRoutes()
+        .filter((route) => route.meta?.menu && route?.children?.length)
+        .map((route) => {
+          let menu: IMenu = { ...route.meta?.menu };
+          menu.children = route.children
+            ?.filter((child) => child.meta?.menu)
+            .map((child) => {
+              return { ...child.meta?.menu, route: child.name };
+            }) as IMenu[];
+          return menu;
+        })
+        .filter((route) => route?.children?.length);
+    },
+  },
+  persist: true,
+});

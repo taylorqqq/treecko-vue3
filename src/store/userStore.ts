@@ -6,52 +6,54 @@ import { CacheEnum } from "@/enum/cacheEnum";
 
 export const useUserStore = defineStore(
   "user",
-  () => {
-    const userInfo = ref({} as InfoInterface);
 
-    const getUserInfo = async () => {
-      const { data } = await userApi.getInfo();
-      userInfo.value = data;
-    };
-
-    const toLogin = (params: any) => {
-      return new Promise((resolve, reject) => {
-        userApi
-          .userLogin(params)
-          .then((res) => {
-            const { token } = res.data;
-            local.set(
-              CacheEnum.TOKEN_KEY,
-              token,
-              new Date().getTime() + 1000 * 60 * 60 * 24
-            );
-            resolve(res.code);
-          })
-          .catch((err) => {
-            reject(err);
-          });
-      });
-    };
-
-    const toLogOut = () => {
-      return new Promise((resolve, reject) => {
-        userApi
-          .userLogOut()
-          .then((res) => {
-            // local.remove(CacheEnum.TOKEN_KEY);
-            localStorage.clear();
-            userInfo.value = {} as InfoInterface;
-            resolve(res.code);
-          })
-          .catch((err) => {
-            reject(err);
-          });
-      });
-    };
-
-    return { userInfo, getUserInfo, toLogin, toLogOut };
-  },
   {
+    state: () => {
+      return {
+        userInfo: {} as InfoInterface,
+      };
+    },
+    actions: {
+      async getUserInfo() {
+        const { data } = await userApi.getInfo();
+        this.userInfo = data;
+      },
+
+      toLogin(params: any) {
+        return new Promise((resolve, reject) => {
+          userApi
+            .userLogin(params)
+            .then((res) => {
+              const { token } = res.data;
+              local.set(
+                CacheEnum.TOKEN_KEY,
+                token,
+                new Date().getTime() + 1000 * 60 * 60 * 24
+              );
+              resolve(res.code);
+            })
+            .catch((err) => {
+              reject(err);
+            });
+        });
+      },
+
+      toLogOut() {
+        return new Promise((resolve, reject) => {
+          userApi
+            .userLogOut()
+            .then((res) => {
+              // local.remove(CacheEnum.TOKEN_KEY);
+              localStorage.clear();
+              this.userInfo = {} as InfoInterface;
+              resolve(res.code);
+            })
+            .catch((err) => {
+              reject(err);
+            });
+        });
+      },
+    },
     persist: true,
   }
 );
