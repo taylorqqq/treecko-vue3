@@ -1,14 +1,24 @@
 <template>
   <div class="bg-white p-4 flex justify-between items-center">
-    <el-breadcrumb separator="/">
-      <el-breadcrumb-item
-        v-for="(route, index) in levelList"
-        :key="index"
-        :to="index === 0 ? undefined : { path: route.path }"
-      >
-        {{ route.meta.menu?.title }}
-      </el-breadcrumb-item>
-    </el-breadcrumb>
+    <div class="flex justify-between items-center">
+      <div @click="menuStore.toggleMenu()">
+        <i
+          class="fas mr-3 cursor-pointer"
+          :class="
+            menuStore.close ? 'fa-square-caret-right' : 'fa-square-caret-left'
+          "
+        ></i>
+      </div>
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item
+          v-for="(route, index) in levelList"
+          :key="index"
+          :to="index === 0 ? undefined : { path: route.path }"
+        >
+          {{ route.meta.menu?.title }}
+        </el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
 
     <div
       class="user flex justify-between items-center relative group cursor-pointer"
@@ -45,7 +55,9 @@
 import { ref, onBeforeMount } from "vue";
 import { useRouter, useRoute, RouteLocationMatched } from "vue-router";
 import { useUserStore } from "@/store/userStore";
+import { useMenuStore } from "@/store/menuStore";
 const userStore = useUserStore();
+const menuStore = useMenuStore();
 const router = useRouter();
 const route = useRoute();
 

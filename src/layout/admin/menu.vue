@@ -1,5 +1,8 @@
 <template>
-  <div class="hidden md:block menu w-[200px] bg-gray-800 p-2 min-h-screen">
+  <div
+    class="menu hidden md:block w-[200px] bg-gray-800 p-2 min-h-screen"
+    :class="{ close: useMenuStore().close }"
+  >
     <div class="logo text-gray-300 flex items-center">
       <i class="fab fa-battle-net text-pink-700 mr-2 text-[26px]"></i>
       <span class="text-[20px]">管理系统</span>
@@ -94,7 +97,7 @@ const handeleResetMenu = (menu: IMenu) => {
 </script>
 
 <style scoped lang="scss">
-.admin {
+.menu {
   .left-container {
     dl {
       @apply text-gray-300 text-sm;
@@ -130,5 +133,9 @@ const handeleResetMenu = (menu: IMenu) => {
       }
     }
   }
+
+  // &.close {
+  //   @apply w-[80px];
+  // }
 }
 </style>

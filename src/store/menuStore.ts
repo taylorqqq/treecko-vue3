@@ -7,6 +7,7 @@ export const useMenuStore = defineStore("menu", {
     return {
       menus: [] as IMenu[],
       historyMenu: [] as IMenu[],
+      close: false,
     };
   },
   actions: {
@@ -32,7 +33,11 @@ export const useMenuStore = defineStore("menu", {
       this.historyMenu.splice(index, 1);
 
       if (menu.route === router.currentRoute.value.name) {
-        router.push({ name: this.historyMenu[index - 1].route });
+        if (index > 0) {
+          router.push({ name: this.historyMenu[index - 1].route });
+        } else {
+          router.push({ name: this.historyMenu[0].route });
+        }
       }
     },
     // 获取活跃菜单
@@ -69,6 +74,10 @@ export const useMenuStore = defineStore("menu", {
           return menu;
         })
         .filter((route) => route?.children?.length);
+    },
+    // 菜单收缩
+    toggleMenu() {
+      this.close = !this.close;
     },
   },
   persist: true,
