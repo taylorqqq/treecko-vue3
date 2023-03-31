@@ -6,11 +6,11 @@
       <HistoryLink />
       <div class="m-5">
         <router-view #default="{ Component }">
-          <Transition
+          <!-- <Transition
             enter-active-class="animate__animated animate__bounceOutRight"
-          >
-            <component :is="Component"></component>
-          </Transition>
+          > -->
+          <component :is="Component"></component>
+          <!-- </Transition> -->
         </router-view>
       </div>
     </div>

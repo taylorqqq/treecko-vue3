@@ -34,11 +34,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouterStore } from "@/store/menuStore";
+import { useMenuStore } from "@/store/menuStore";
 import router from "@/router";
-useRouterStore().init();
-const { menus } = useRouterStore();
-console.log(menus);
+const { menus } = useMenuStore();
+
+useMenuStore().init();
 
 /**
  * @description 选择菜单

@@ -7,11 +7,6 @@ export default {
   meta: {
     requiresAuth: false,
     guest: false,
-    menu: {
-      icon: "fab fa-blogger",
-      title: "操作页面",
-      isActive: false,
-    },
   },
   children: [
     {
@@ -21,11 +16,6 @@ export default {
       meta: {
         requiresAuth: false,
         guest: true,
-        menu: {
-          icon: "fab fa-blogger",
-          title: "登录",
-          isActive: false,
-        },
       },
     },
   ],

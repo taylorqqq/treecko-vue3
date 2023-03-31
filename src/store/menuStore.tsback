@@ -2,7 +2,7 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { useRouter } from "vue-router";
 
-export const useRouterStore = defineStore(
+export const useMenuStore = defineStore(
   "router",
   () => {
     const routes = getRoutes();
