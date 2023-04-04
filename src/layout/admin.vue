@@ -34,10 +34,11 @@ import { useRoute } from "vue-router";
 import { watch } from "vue";
 const route = useRoute();
 
-useMenuStore().init();
 watch(
   route,
   () => {
+    useMenuStore().init();
+    useMenuStore().addHistoryMenu(route);
     useMenuStore().getActiveMenu();
   },
   { immediate: true }
