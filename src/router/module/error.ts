@@ -3,6 +3,7 @@ import { RouteRecordRaw } from "vue-router";
 export default {
   name: "error",
   path: "/error",
+  redirect: "/403",
   component: () => import("@/layout/admin.vue"),
   meta: {
     requiresAuth: false,

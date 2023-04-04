@@ -12,7 +12,6 @@
           <dt
             @click="
               () => {
-                $router.push('/dashboard');
                 menus.forEach((item) => {
                   item.isActive = false;
                   if (item.children && item.children.length > 0) {
@@ -21,6 +20,7 @@
                     });
                   }
                 });
+                $router.push('/dashboard');
               }
             "
             :class="{
@@ -51,7 +51,7 @@
               ></i>
             </section>
           </dt>
-          <dd v-show="pmenu?.isActive">
+          <dd :class="pmenu?.isActive ? 'block' : 'hidden'">
             <div
               v-for="(cmenu, cindex) in pmenu.children"
               :class="{ active: cmenu?.isActive, horizontal: model.horizontal }"
@@ -65,7 +65,11 @@
       </div>
     </div>
     <!-- 遮罩层 -->
-    <div class="bg block md:hidden"></div>
+    <div
+      class="bg block md:hidden"
+      :class="{ close: useMenuStore().close }"
+      @click="useMenuStore().toggleMenu()"
+    ></div>
   </div>
 </template>
 
@@ -171,6 +175,10 @@ const isMenuNotActive = () => {
 @media screen and (max-width: 768px) {
   .menu {
     @apply absolute top-0 left-0 z-20;
+
+    &.close {
+      @apply hidden;
+    }
   }
 }
 
@@ -224,5 +232,9 @@ const isMenuNotActive = () => {
 
 .bg {
   @apply w-full h-full bg-black opacity-50 fixed top-0 left-0 z-10;
+
+  &.close {
+    @apply hidden;
+  }
 }
 </style>

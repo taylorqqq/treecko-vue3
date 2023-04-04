@@ -3,6 +3,7 @@ import { RouteRecordRaw } from "vue-router";
 export default {
   name: "editor",
   path: "/editor",
+  redirect: "/markdown",
   component: () => import("@/layout/admin.vue"),
   meta: {
     requiresAuth: true,

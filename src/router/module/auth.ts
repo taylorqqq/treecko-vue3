@@ -3,6 +3,7 @@ import { RouteRecordRaw } from "vue-router";
 export default {
   name: "auth",
   path: "/auth",
+  redirect: "/login",
   component: () => import("@/layout/auth.vue"),
   meta: {
     requiresAuth: false,
