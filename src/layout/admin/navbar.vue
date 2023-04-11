@@ -18,15 +18,14 @@
       </el-breadcrumb>
     </div>
 
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center cursor-pointer">
+      <Notification class="mr-8" />
       <i
-        class="mr-2"
+        class="mr-8"
         @click="fullScreen"
         :class="isFullScreen ? 'fas fa-minimize' : 'fas fa-maximize'"
       ></i>
-      <div
-        class="relative flex justify-between items-center group cursor-pointer"
-      >
+      <div class="relative flex justify-between items-center group">
         <!-- :src="userStore.userInfo.avatar" -->
         <img
           src="@/assets/images/avatar.jpeg"
