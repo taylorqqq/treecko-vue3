@@ -4,8 +4,8 @@
       <span
         v-for="(menu, index) in historyMenu"
         :key="index"
-        class="bg-white rounded-md shadow-sm border py-2 px-3 text-sm text-gray-600 cursor-pointer hover:bg-violet-500 hover:text-white"
-        :class="{ '!bg-violet-500 text-white': $route.name === menu.route }"
+        class="bg-white rounded-md shadow-sm border py-2 px-3 text-sm text-gray-600 cursor-pointer hover:bg-blue-500 hover:text-white"
+        :class="{ '!bg-blue-500 text-white': $route.name === menu.route }"
       >
         <router-link :to="{ name: menu.route }">
           {{ menu.title }}

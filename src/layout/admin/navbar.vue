@@ -7,15 +7,7 @@
           :class="menuStore.close ? 'fa-align-right' : 'fa-align-left'"
         ></i>
       </div>
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item
-          v-for="(route, index) in levelList"
-          :key="index"
-          :to="index === 0 ? undefined : { path: route.path }"
-        >
-          {{ route.meta.menu?.title }}
-        </el-breadcrumb-item>
-      </el-breadcrumb>
+      <Breadcrumb class="hidden md:block" />
     </div>
 
     <div class="flex justify-between items-center cursor-pointer">
@@ -56,22 +48,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onBeforeMount } from "vue";
-import { useRouter, useRoute, RouteLocationMatched } from "vue-router";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/userStore";
 import { useMenuStore } from "@/store/menuStore";
 const userStore = useUserStore();
 const menuStore = useMenuStore();
 const router = useRouter();
-const route = useRoute();
 
 const isFullScreen = ref(false);
-
-const levelList = ref(<RouteLocationMatched[]>[]);
-
-const getLevelList = () => {
-  levelList.value = route.matched.filter((item) => item.name && item.meta.menu);
-};
 
 const fullScreen = () => {
   const docElm = document.documentElement;
@@ -87,14 +72,6 @@ const fullScreen = () => {
   }
   isFullScreen.value = !isFullScreen.value;
 };
-
-onBeforeMount(() => {
-  getLevelList();
-});
-
-router.afterEach(() => {
-  getLevelList();
-});
 
 const handleLogOut = async () => {
   const code = await userStore.toLogOut();
