@@ -27,6 +27,7 @@ export default {
           title: "Markdown",
           isActive: false,
         },
+        permission: "editor",
       },
     },
   ],

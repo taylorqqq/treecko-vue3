@@ -41,6 +41,7 @@ export default [
             "png",
             "木守"
           ),
+          permissions: ["editor"],
         },
       };
     },
