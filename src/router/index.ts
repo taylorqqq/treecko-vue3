@@ -7,12 +7,14 @@ import { App } from "vue";
 import routes from "./routes";
 import autoloadRoutes from "./autoload";
 import guard from "./guard";
+import { useUserStore } from "@/store/userStore";
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [...routes],
 });
-export function setupRouter(app: App) {
+export async function setupRouter(app: App) {
+  await useUserStore().getUserInfo();
   autoloadRoutes(router);
   guard(router);
   app.use(router);

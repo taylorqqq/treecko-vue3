@@ -1,6 +1,6 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
-import userApi from "@/api/UserApi";
+import userApi from "@/api/userApi";
 import { local } from "@/utils";
 import { CacheEnum } from "@/enum/cacheEnum";
 

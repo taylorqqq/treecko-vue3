@@ -16,7 +16,7 @@ class Guard {
     if (this.isLogin(to) === false) return { name: "login" };
     // if (this.isGuest(to) === false) return { name: "home" };
     if (this.isGuest(to) === false) return from;
-    await this.getUserInfo();
+    // await this.getUserInfo();  //迁移到setupRouter中
   }
 
   private getToken(): string | null {
@@ -24,7 +24,7 @@ class Guard {
   }
 
   private getUserInfo = () => {
-    if (!this.getToken()) {
+    if (this.getToken()) {
       useUserStore().getUserInfo();
     }
   };

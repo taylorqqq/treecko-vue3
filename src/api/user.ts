@@ -10,6 +10,7 @@ interface InfoInterface {
   name: string;
   age: number;
   avatar: string;
+  permissions: string[];
 }
 const getInfo = () => getAction<InfoInterface>("/user/info");
 

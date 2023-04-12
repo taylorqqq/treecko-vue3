@@ -5,4 +5,5 @@ interface InfoInterface {
   name: string;
   age: number;
   avatar: string;
+  permissions: string[];
 }

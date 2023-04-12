@@ -41,7 +41,7 @@ export default [
             "png",
             "木守"
           ),
-          permissions: ["editor"],
+          permissions: ["admin", "editor", "wangeditor"],
         },
       };
     },

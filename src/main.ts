@@ -6,8 +6,8 @@ import { setupPlugins } from "@/plugins";
 
 async function bootStrap() {
   const app = createApp(App);
-  setupRouter(app);
   setupPlugins(app);
+  setupRouter(app);
   await router.isReady(); //等待路由准备就绪 再挂载
   app.mount("#app");
 }

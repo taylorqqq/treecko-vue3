@@ -30,5 +30,20 @@ export default {
         permission: "editor",
       },
     },
+    {
+      name: "wangeditor",
+      path: "/wangeditor",
+      component: () => import("@/views/editor/wangeditor.vue"),
+      meta: {
+        requiresAuth: true,
+        guest: false,
+        menu: {
+          icon: "fab fa-blogger",
+          title: "WangEditor",
+          isActive: false,
+        },
+        permission: "wangeditor",
+      },
+    },
   ],
 } as RouteRecordRaw;

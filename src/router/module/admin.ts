@@ -27,6 +27,7 @@ export default {
           title: "首页",
           isActive: false,
         },
+        permission: "admin",
       },
     },
   ],
