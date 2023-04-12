@@ -1,4 +1,4 @@
-export const echartDemoOption = {
+export const echartDemoOption: any = {
   title: {
     text: "ECharts 入门示例",
   },
@@ -16,7 +16,7 @@ export const echartDemoOption = {
   ],
 };
 
-export const echartDemoOption2 = {
+export const echartDemoOption2: any = {
   title: {
     text: "Referer of a Website",
     subtext: "Fake Data",

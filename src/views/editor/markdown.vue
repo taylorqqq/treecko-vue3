@@ -6,7 +6,6 @@
       placeholder="请输入markdown语法"
       @update:modelValue="updateContent"
     />
-    {{ content }}
   </div>
 </template>
 

@@ -98,11 +98,15 @@ const cardList: ICard[] = reactive([
 ]);
 onMounted(() => {
   nextTick(() => {
-    var myChart1 = echarts.init(document.getElementById("main"));
+    var myChart1 = echarts.init(
+      document.getElementById("main") as HTMLDivElement
+    );
     // 绘制图表
     myChart1.setOption(echartDemoOption);
 
-    var myChart2 = echarts.init(document.getElementById("main2"));
+    var myChart2 = echarts.init(
+      document.getElementById("main2") as HTMLDivElement
+    );
     myChart2.setOption(echartDemoOption2);
   });
 });
