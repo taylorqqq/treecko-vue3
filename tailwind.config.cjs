@@ -4,5 +4,27 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        ".no-visibility": {
+          visibility: "hidden",
+        },
+        ".no-opacity": {
+          opacity: "0",
+        },
+        ".no-pointer-events": {
+          pointerEvents: "none",
+        },
+        ".no-user-select": {
+          userSelect: "none",
+        },
+        ".no-show": {
+          display: "none",
+        },
+      };
+
+      addUtilities(newUtilities);
+    },
+  ],
 };
