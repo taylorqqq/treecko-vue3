@@ -17,6 +17,7 @@
       "@/*": ["./src/*"],
       "#/*": ["./types/*"]
     },
+    "types": ["element-plus/global", "echarts", "lodash"] //手动添加
   },
   "include": [
     "src/**/*.ts",
@@ -29,5 +30,5 @@
     "types/**/*.d.ts",
     "types/**/*.ts"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  // "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -13,6 +13,22 @@ export default ({ command, mode }: ConfigEnv) => {
     resolve: {
       alias,
     },
+    build: {
+      rollupOptions: {
+        emptyOutDir: true, // 清空输出目录
+        output: {
+          manualChunks(id: string) {
+            if (id.includes("node_modules")) {
+              return id
+                .toString()
+                .split("node_modules/")[1]
+                .split("/")[0]
+                .toString();
+            }
+          },
+        },
+      },
+    },
     server: {
       open: true,
       port: 3001,
