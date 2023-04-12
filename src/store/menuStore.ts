@@ -13,6 +13,16 @@ export const useMenuStore = defineStore("menu", {
   actions: {
     init() {
       this.getMenuyByRoutes();
+      this.getHistoryMenu();
+    },
+    getHistoryMenu() {
+      let routes = router.getRoutes();
+      this.historyMenu.forEach((item) => {
+        let status = routes.some((route) => route.name === item.route);
+        if (!status) {
+          this.removeHistoryMenu(item);
+        }
+      });
     },
     addHistoryMenu(route: RouteLocationNormalized) {
       if (!route.meta?.menu) return;
