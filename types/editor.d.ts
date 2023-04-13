@@ -27,3 +27,13 @@ declare namespace toastui {
     addHook: (type: string, handle: Function) => void;
   }
 }
+
+declare class wangEditor {
+  constructor(el: string);
+  create(): void;
+  config: { [key: string]: any };
+  txt: {
+    html: (html: string) => void;
+    text: (text: string) => void;
+  };
+}

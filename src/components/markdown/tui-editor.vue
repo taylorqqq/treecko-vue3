@@ -1,5 +1,5 @@
 <template>
-  <div id="editor"></div>
+  <div id="tuieditor"></div>
 </template>
 
 <script lang="ts" setup>
@@ -22,7 +22,7 @@ const emit = defineEmits(["update:modelValue"]);
 
 nextTick(() => {
   const editor = new ToastEditor(
-    "#editor",
+    "#tuieditor",
     props.modelValue,
     `${props.height}px`
   );
@@ -43,7 +43,7 @@ nextTick(() => {
 </script>
 
 <style lang="scss">
-#editor {
+#tuieditor {
   @apply bg-white;
 
   .toastui-editor-mode-switch {

@@ -2,8 +2,8 @@
   <div class="notification">
     <i class="fas fa-bell" @click.stop="showTab = !showTab"></i>
 
-    <el-tabs v-model="activeName" class="tab" v-show="showTab" @click.stop>
-      <el-tab-pane
+    <el-tabs v-model="activeName" class="tab" v-show="showTab" @click.stop
+      ><el-tab-pane
         v-for="item in panes"
         :key="item.key"
         :label="item.label"
