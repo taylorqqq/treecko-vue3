@@ -5,7 +5,7 @@ import setupPinia from "./pinia";
 import _ from "lodash";
 
 export function setupPlugins(app: App) {
-  autoRegisterComponents(app);
+  // autoRegisterComponents(app);
   setupTailwindcss();
   setupElementPlus(app);
   setupPinia(app);

@@ -2,6 +2,7 @@ import { defineConfig, ConfigEnv, loadEnv } from "vite";
 import alias from "./vite/alias";
 import { parseEnv } from "./vite/util";
 import { setupPlugins } from "./vite/plugins";
+import path from "path";
 
 export default ({ command, mode }: ConfigEnv) => {
   const isBuild = command === "build"; // 判断是否是生产环境
@@ -14,6 +15,8 @@ export default ({ command, mode }: ConfigEnv) => {
       alias,
     },
     build: {
+      target: "es2015",
+      outDir: "dist",
       rollupOptions: {
         emptyOutDir: true, // 清空输出目录
         output: {
@@ -25,6 +28,10 @@ export default ({ command, mode }: ConfigEnv) => {
                 .split("/")[0]
                 .toString();
             }
+            // 将pinia的全局库实例打包进vendor，避免和页面一起打包造成资源重复引入
+            // if (id.includes(path.resolve(__dirname, '/src/store/index.ts'))) {
+            //   return 'vendor'
+            // }
           },
         },
       },

@@ -12,7 +12,6 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 const content = ref("Hello, Toast UI1!");
-
 const updateContent = (value: string) => {
   content.value = value;
 };

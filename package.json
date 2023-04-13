@@ -21,7 +21,10 @@
     "pinia": "^2.0.33",
     "pinia-plugin-persistedstate": "^3.1.0",
     "rollup-plugin-visualizer": "^5.9.0",
+    "unplugin-icons": "^0.16.1",
     "vee-validate": "^4.5.7",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-vue-setup-extend": "^0.4.0",
     "vue": "^3.2.45",
     "vue-router": "4",
     "yup": "^0.32.11"

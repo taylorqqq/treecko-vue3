@@ -2,7 +2,11 @@ import vue from "@vitejs/plugin-vue";
 import { Plugin } from "vite";
 import { visualizer } from "rollup-plugin-visualizer";
 import { setupMockPlugins } from "./mock";
-import { setupElementUiPlugins } from "./elementui";
+import { setupAutoImportPlugins } from "./autoimport";
+
+import viteCompression from "vite-plugin-compression";
+import vueSetupExtend from "vite-plugin-vue-setup-extend";
+
 export function setupPlugins(isBuild: boolean, env: Record<string, any>) {
   const plugins: Plugin[] = [
     vue(),
@@ -13,7 +17,13 @@ export function setupPlugins(isBuild: boolean, env: Record<string, any>) {
       gzipSize: true, //从源代码中收集 gzip 大小并将其显示在图表中
       brotliSize: true, //从源代码中收集 brotli 大小并将其显示在图表中
     }),
-    ...setupElementUiPlugins(),
+    ...setupAutoImportPlugins(),
+    vueSetupExtend(),
+    viteCompression({
+      ext: ".gz",
+      algorithm: "gzip",
+      deleteOriginFile: false,
+    }),
   ];
   plugins.push(setupMockPlugins(isBuild));
 
