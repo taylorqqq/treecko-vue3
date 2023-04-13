@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
     ElTag: typeof import('element-plus/es')['ElTag']
     HButton: typeof import('./../src/components/h-button.vue')['default']
     HInput: typeof import('./../src/components/form/h-input.vue')['default']
+    HTransition: typeof import('./../src/components/animate/h-transition.vue')['default']
     Notification: typeof import('./../src/components/Notification.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
