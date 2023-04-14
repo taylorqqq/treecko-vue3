@@ -1,16 +1,19 @@
+import Editor from "@toast-ui/editor";
 import { uploadImage } from "@/api/upload";
 
 export default class {
-  toastEditor: toastui.Editor;
+  // toastEditor: toastui.Editor; //cdn
+  toastEditor: Editor;
   isFullScreen: boolean = false;
   constructor(el: string, initialValue: string, public height: string) {
-    this.toastEditor = new toastui.Editor({
+    // this.toastEditor = new toastui.Editor({ //cdn
+    this.toastEditor = new Editor({
       el: document.querySelector(el) as HTMLElement,
       initialEditType: "markdown",
       previewStyle: "vertical",
       height,
       initialValue,
-      toolbarItems: this.toolbarItems(),
+      toolbarItems: this.toolbarItems() as [],
     });
 
     this.ImageHook();

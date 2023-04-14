@@ -49,6 +49,7 @@
 <script lang="ts" setup>
 import { ref, reactive, onMounted, getCurrentInstance, nextTick } from "vue";
 import { echartDemoOption, echartDemoOption2 } from "./echart";
+import * as echarts from "echarts";
 interface ICard {
   id: number;
   title: string;
