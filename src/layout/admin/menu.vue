@@ -34,7 +34,7 @@
                 theme="outline"
                 size="24"
                 fill="#f50"
-                class="mr-2"
+                class="mr-2 pmenuIcon"
               />
               <span>dashboard</span>
             </section>
@@ -54,7 +54,7 @@
                 theme="outline"
                 size="24"
                 fill="#f50"
-                class="mr-2"
+                class="mr-2 pmenuIcon"
               />
               <span>{{ pmenu?.title }}</span>
             </section>
@@ -224,6 +224,9 @@ const isMenuNotActive = () => {
 
       span {
         @apply hidden;
+      }
+      .pmenuIcon {
+        @apply block mr-0;
       }
 
       .left-container {
