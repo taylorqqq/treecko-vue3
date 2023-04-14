@@ -24,5 +24,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     TuiEditor: typeof import('./../src/components/markdown/tui-editor.vue')['default']
     WangEditor: typeof import('./../src/components/wangEditor/wang-editor.vue')['default']
+    WangEditorOl: typeof import('./../src/components/wangEditor/wang-editor-ol.vue')['default']
+    WangEditorOld: typeof import('./../src/components/wangEditor/wang-editor-old.vue')['default']
   }
 }

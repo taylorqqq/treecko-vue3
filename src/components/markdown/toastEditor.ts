@@ -54,9 +54,10 @@ export default class {
 
   private fullScreen() {
     let button = document.createElement("button");
-    let i = document.createElement("i");
+    let i = document.createElement("a");
     i.className = "fas fa-maximize icon-fullScreen";
-    i.style.fontSize = "16px";
+    // i.style.fontSize = "16px";
+    i.innerHTML = "全屏";
     button.appendChild(i);
     button.style.margin = "0";
     button.addEventListener("click", () => {
@@ -89,6 +90,7 @@ export default class {
       ".icon-fullScreen"
     ) as HTMLElement;
     iconfullScreen.classList.toggle("fa-minimize");
+    iconfullScreen.innerHTML = "退出";
     // iconfullScreen.classList.toggle("fa-maximize"); //触发fullScreen()方法时，会默认加上fa-maximize 这里不必二次添加
   }
 }
