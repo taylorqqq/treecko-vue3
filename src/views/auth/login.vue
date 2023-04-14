@@ -38,9 +38,15 @@
             <button class="login-button mt-5">登录</button>
 
             <div class="flex justify-center mt-3">
-              <i
+              <!-- <i
                 class="fa-brands fa-weixin bg-green-600 text-white rounded-full p-1 cursor-pointer"
-              ></i>
+              ></i> -->
+              <i-wechat
+                theme="filled"
+                size="24"
+                fill="green"
+                class="cursor-pointer"
+              />
             </div>
           </div>
 

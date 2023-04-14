@@ -23,7 +23,8 @@ export default {
         requiresAuth: true,
         guest: false,
         menu: {
-          icon: "fab fa-blogger",
+          // icon: "fab fa-blogger",
+          icon: "DashboardOne",
           title: "首页",
           isActive: false,
         },

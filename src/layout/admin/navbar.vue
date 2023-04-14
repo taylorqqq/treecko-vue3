@@ -1,11 +1,23 @@
 <template>
-  <div class="bg-white p-4 flex justify-between items-center">
+  <div class="bg-white p-3 flex justify-between items-center">
     <div class="flex justify-between items-center">
-      <div @click="menuStore.toggleMenu()">
-        <i
+      <div @click="menuStore.toggleMenu()" class="pr-2">
+        <!-- <i
           class="fas mr-3 cursor-pointer"
           :class="menuStore.close ? 'fa-align-right' : 'fa-align-left'"
-        ></i>
+        ></i> -->
+        <i-indent-left
+          theme="filled"
+          size="24"
+          fill="#f50"
+          v-show="!menuStore.close"
+        />
+        <i-indent-right
+          theme="filled"
+          size="24"
+          fill="#f50"
+          v-show="menuStore.close"
+        />
       </div>
       <Breadcrumb class="hidden md:block" />
     </div>
@@ -27,18 +39,21 @@
           userStore.userInfo.name
         }}</span>
         <section
-          class="absolute z-10 top-full right-0 group-hover:block bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden"
+          class="absolute z-20 top-full right-0 group-hover:block bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden"
         >
           <div class="flex items-center py-2">
-            <a class="fas fa-file-lines"></a>
+            <!-- <i class="fas fa-file-lines"></i> -->
+            <i-doc-search-two theme="filled" size="16" fill="#f50" />
             <span class="text-xs text-gray-600 ml-2">文档资料</span>
           </div>
           <div class="flex items-center py-2">
-            <a class="fas fa-user"></a>
+            <!-- <i class="fas fa-user"></i> -->
+            <i-id-card-v theme="filled" size="16" fill="#f50" />
             <span class="text-xs text-gray-600 ml-2">用户管理</span>
           </div>
           <div class="flex items-center border-t py-3" @click="handleLogOut">
-            <a class="fas fa-sign-out-alt"></a>
+            <!-- <i class="fas fa-sign-out-alt"></i> -->
+            <i-logout theme="filled" size="16" fill="#f50" />
             <span class="text-xs text-gray-600 ml-2">退出登录</span>
           </div>
         </section>

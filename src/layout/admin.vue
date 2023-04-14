@@ -17,7 +17,7 @@
               route.meta.leaveClass ?? 'animate__fadeOutLeft'
             "
           >
-            <component :is="Component" class="absolute w-full"></component>
+            <component :is="Component" class="absolute w-full z-10"></component>
           </Transition>
         </router-view>
       </div>

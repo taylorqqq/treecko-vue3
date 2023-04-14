@@ -109,6 +109,11 @@ onMounted(() => {
       document.getElementById("main2") as HTMLDivElement
     );
     myChart2.setOption(echartDemoOption2);
+
+    window.addEventListener("resize", () => {
+      myChart1.resize();
+      myChart2.resize();
+    });
   });
 });
 </script>

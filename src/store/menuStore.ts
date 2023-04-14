@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import router from "@/router";
 import { RouteLocationNormalized } from "vue-router";
+import { IMenu } from "#/menu";
 
 export const useMenuStore = defineStore("menu", {
   state: () => {

@@ -2,6 +2,7 @@ import { App } from "vue";
 import { setupTailwindcss } from "./tailwindcss";
 import setupElementPlus from "./elementui";
 import setupPinia from "./pinia";
+import setupIconPark from "./iconPark";
 import _ from "lodash";
 
 export function setupPlugins(app: App) {
@@ -9,6 +10,7 @@ export function setupPlugins(app: App) {
   setupTailwindcss();
   setupElementPlus(app);
   setupPinia(app);
+  setupIconPark(app);
 }
 
 /**

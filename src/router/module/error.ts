@@ -9,7 +9,8 @@ export default {
     requiresAuth: false,
     guest: false,
     menu: {
-      icon: "fas fa-bug",
+      // icon: "fas fa-bug",
+      icon: "Bug",
       title: "错误页面",
       isActive: false,
     },
@@ -23,7 +24,7 @@ export default {
         requiresAuth: false,
         guest: false,
         menu: {
-          icon: "fab fa-blogger",
+          // icon: "fab fa-blogger",
           title: "403",
           isActive: false,
         },

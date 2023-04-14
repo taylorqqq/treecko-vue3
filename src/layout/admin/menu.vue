@@ -2,7 +2,8 @@
   <div class="admin-menu">
     <div class="menu" :class="{ close: useMenuStore().close }">
       <div class="logo">
-        <i class="fas fa-robot text-pink-700 mr-2 text-[26px]"></i>
+        <i-home theme="outline" size="24" fill="#f50" class="mr-2" />
+        <!-- <i class="fas fa-robot text-pink-700 mr-2 text-[26px]"></i> -->
         <span class="text-[20px]">管理系统</span>
       </div>
 
@@ -28,7 +29,13 @@
             }"
           >
             <section>
-              <i class="fas fa-home"></i>
+              <!-- <i class="fas fa-home"></i> -->
+              <i-dashboard-one
+                theme="outline"
+                size="24"
+                fill="#f50"
+                class="mr-2"
+              />
               <span>dashboard</span>
             </section>
           </dt>
@@ -41,14 +48,33 @@
             }"
           >
             <section>
-              <i :class="pmenu?.icon"></i>
+              <!-- <i :class="pmenu?.icon"></i> -->
+              <component
+                :is="icons[pmenu?.icon]"
+                theme="outline"
+                size="24"
+                fill="#f50"
+                class="mr-2"
+              />
               <span>{{ pmenu?.title }}</span>
             </section>
             <section>
-              <i
+              <!-- <i
                 class="fas fa-angle-down duration-100 rotate"
                 :class="{ 'rotate-180': pmenu?.isActive }"
-              ></i>
+              ></i> -->
+              <i-down
+                theme="filled"
+                size="24"
+                fill="#f50"
+                v-show="!pmenu?.isActive"
+              />
+              <i-up
+                theme="filled"
+                size="24"
+                fill="#f50"
+                v-show="pmenu?.isActive"
+              />
             </section>
           </dt>
           <dd :class="pmenu?.isActive ? 'block' : 'hidden'">
@@ -77,6 +103,8 @@
 import { ref } from "vue";
 import { useMenuStore } from "@/store/menuStore";
 import router from "@/router";
+import * as icons from "@icon-park/vue-next";
+import { IMenu } from "#/menu";
 const { menus } = useMenuStore();
 
 const model = ref({
@@ -174,7 +202,7 @@ const isMenuNotActive = () => {
 
 @media screen and (max-width: 768px) {
   .menu {
-    @apply absolute top-0 left-0 z-20;
+    @apply absolute top-0 left-0 z-30;
 
     &.close {
       @apply hidden;
@@ -219,7 +247,7 @@ const isMenuNotActive = () => {
           //   }
           // }
           dd {
-            @apply absolute w-[184px] left-[72px] top-0 m-0 z-10 bg-blue-800 px-2 bg-gray-900;
+            @apply absolute w-[184px] left-[72px] top-0 m-0 z-20 bg-blue-800 px-2 bg-gray-900;
             .horizontal {
               @apply hover:bg-blue-500;
             }
@@ -231,7 +259,7 @@ const isMenuNotActive = () => {
 }
 
 .bg {
-  @apply w-full h-full bg-black opacity-50 fixed top-0 left-0 z-10;
+  @apply w-full h-full bg-black opacity-50 fixed top-0 left-0 z-20;
 
   &.close {
     @apply hidden;
