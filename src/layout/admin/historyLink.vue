@@ -4,16 +4,23 @@
       <span
         v-for="(menu, index) in historyMenu"
         :key="index"
-        class="bg-white rounded-md shadow-sm border py-2 px-3 text-sm text-gray-600 cursor-pointer hover:bg-blue-500 hover:text-white"
+        class="flex items-center bg-white rounded-md shadow-sm border py-2 px-3 text-sm text-gray-600 cursor-pointer hover:bg-blue-500 hover:text-white"
         :class="{ '!bg-blue-500 text-white': $route.name === menu.route }"
       >
         <router-link :to="{ name: menu.route }">
           {{ menu.title }}
         </router-link>
-        <i
+        <!-- <i
           class="fas fa-times ml-3"
           @click.self="useMenuStore().removeHistoryMenu(menu)"
-        ></i>
+        ></i> -->
+        <i-close-small
+          theme="filled"
+          size="16"
+          :fill="$route.name === menu.route ? 'white' : 'black'"
+          @click="useMenuStore().removeHistoryMenu(menu)"
+          class="ml-3 inline-block"
+        />
       </span>
     </div>
   </div>

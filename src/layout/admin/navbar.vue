@@ -9,13 +9,13 @@
         <i-indent-left
           theme="filled"
           size="24"
-          fill="#f50"
+          fill="black"
           v-show="!menuStore.close"
         />
         <i-indent-right
           theme="filled"
           size="24"
-          fill="#f50"
+          fill="black"
           v-show="menuStore.close"
         />
       </div>
@@ -24,11 +24,27 @@
 
     <div class="flex justify-between items-center cursor-pointer">
       <Notification class="mr-8" />
-      <i
+      <!-- <i
         class="mr-8"
         @click="fullScreen"
         :class="isFullScreen ? 'fas fa-minimize' : 'fas fa-maximize'"
-      ></i>
+      ></i> -->
+      <i-full-screen
+        theme="filled"
+        size="24"
+        fill="black"
+        @click="fullScreen"
+        class="mr-8"
+        v-show="!isFullScreen"
+      />
+      <i-off-screen
+        theme="filled"
+        size="24"
+        fill="black"
+        @click="fullScreen"
+        class="mr-8"
+        v-show="isFullScreen"
+      />
       <div class="relative flex justify-between items-center group">
         <!-- :src="userStore.userInfo.avatar" -->
         <img

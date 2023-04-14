@@ -1,6 +1,12 @@
 <template>
   <div class="notification">
-    <i class="fas fa-bell" @click.stop="showTab = !showTab"></i>
+    <!-- <i class="fas fa-bell" @click.stop="showTab = !showTab"></i> -->
+    <i-remind
+      theme="outline"
+      size="24"
+      fill="black"
+      @click.stop="showTab = !showTab"
+    />
 
     <el-tabs v-model="activeName" class="tab" v-show="showTab" @click.stop
       ><el-tab-pane
@@ -54,7 +60,7 @@ onBeforeUnmount(() => {
 .notification {
   @apply relative;
   .tab {
-    @apply absolute w-[300px] bg-white py-2 px-5 border rounded-md shadow-sm right-[-30px] z-10 text-xs;
+    @apply absolute w-[300px] bg-white py-2 px-5 border rounded-md shadow-sm right-[-30px] z-20 text-xs;
 
     a {
       @apply block truncate overflow-hidden border-b pb-2 my-2 hover:text-blue-500;
