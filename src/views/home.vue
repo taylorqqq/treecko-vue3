@@ -9,11 +9,17 @@
     <RouterLink
       :to="{ name: 'login' }"
       class="login-button w-28 text-center next"
+      v-if="isNotLogin"
       >用户登录</RouterLink
     >
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { CacheEnum } from "@/enum/cacheEnum";
+import { local } from "@/utils";
+
+const isNotLogin = computed(() => {
+  return local.get(CacheEnum.TOKEN_KEY) ? true : false;
+});
 </script>

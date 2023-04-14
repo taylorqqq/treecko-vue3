@@ -2,7 +2,7 @@
   <div class="admin-menu">
     <div class="menu" :class="{ close: useMenuStore().close }">
       <div class="logo">
-        <i-home theme="outline" size="24" fill="#f50" class="mr-2" />
+        <i-home theme="outline" size="24" fill="#fff" class="mr-2" />
         <!-- <i class="fas fa-robot text-pink-700 mr-2 text-[26px]"></i> -->
         <span class="text-[20px]">管理系统</span>
       </div>
@@ -33,7 +33,7 @@
               <i-dashboard-one
                 theme="outline"
                 size="24"
-                fill="#f50"
+                fill="#fff"
                 class="mr-2 pmenuIcon"
               />
               <span>dashboard</span>
@@ -53,7 +53,7 @@
                 :is="icons[pmenu?.icon!]"
                 theme="outline"
                 size="24"
-                fill="#f50"
+                fill="#fff"
                 class="mr-2 pmenuIcon"
               />
               <span>{{ pmenu?.title }}</span>
@@ -66,13 +66,13 @@
               <i-down
                 theme="filled"
                 size="24"
-                fill="#f50"
+                fill="#fff"
                 v-show="!pmenu?.isActive"
               />
               <i-up
                 theme="filled"
                 size="24"
-                fill="#f50"
+                fill="#fff"
                 v-show="pmenu?.isActive"
               />
             </section>

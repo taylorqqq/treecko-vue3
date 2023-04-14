@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white p-3 flex justify-between items-center">
     <div class="flex justify-between items-center">
-      <div @click="menuStore.toggleMenu()" class="pr-2">
+      <div @click="menuStore.toggleMenu()" class="pr-2 cursor-pointer">
         <!-- <i
           class="fas mr-3 cursor-pointer"
           :class="menuStore.close ? 'fa-align-right' : 'fa-align-left'"
@@ -59,17 +59,17 @@
         >
           <div class="flex items-center py-2">
             <!-- <i class="fas fa-file-lines"></i> -->
-            <i-doc-search-two theme="filled" size="16" fill="#f50" />
+            <i-doc-search-two theme="outline" size="16" fill="#000" />
             <span class="text-xs text-gray-600 ml-2">文档资料</span>
           </div>
           <div class="flex items-center py-2">
             <!-- <i class="fas fa-user"></i> -->
-            <i-id-card-v theme="filled" size="16" fill="#f50" />
+            <i-id-card-v theme="outline" size="16" fill="#000" />
             <span class="text-xs text-gray-600 ml-2">用户管理</span>
           </div>
           <div class="flex items-center border-t py-3" @click="handleLogOut">
             <!-- <i class="fas fa-sign-out-alt"></i> -->
-            <i-logout theme="filled" size="16" fill="#f50" />
+            <i-logout theme="outline" size="16" fill="#000" />
             <span class="text-xs text-gray-600 ml-2">退出登录</span>
           </div>
         </section>

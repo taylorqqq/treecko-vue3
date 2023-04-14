@@ -9,7 +9,7 @@ let routes: RouteRecordRaw[] = envs.VITE_ROUTER_AUTOLOAD
   : autoloadModuleRoutes();
 
 const autoloadRoutes = (router: Router) => {
-  const permissions = useUserStore().userInfo.permissions;
+  const permissions = useUserStore().userInfo?.permissions;
 
   routes = routes.map((route) => {
     route.children = route.children?.filter((child) => {
