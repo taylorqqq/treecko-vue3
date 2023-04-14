@@ -1,3 +1,5 @@
+import { CacheEnum } from "@/enum/cacheEnum";
+import { local } from "@/utils";
 import axios, { AxiosRequestConfig } from "axios";
 
 export default class Axios {
@@ -14,7 +16,7 @@ export default class Axios {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.instance.request<D>(config);
-          resolve(response.data);
+        resolve(response.data);
       } catch (error) {
         reject(error);
       }
@@ -29,6 +31,8 @@ export default class Axios {
   private interceptorsRequest() {
     this.instance.interceptors.request.use(
       (config) => {
+        config.headers["Authorization"] =
+          "Bearer " + local.get(CacheEnum.TOKEN_KEY);
         return config;
       },
       (error) => {

@@ -20,6 +20,6 @@ import { CacheEnum } from "@/enum/cacheEnum";
 import { local } from "@/utils";
 
 const isNotLogin = computed(() => {
-  return local.get(CacheEnum.TOKEN_KEY) ? true : false;
+  return local.get(CacheEnum.TOKEN_KEY) ? false : true;
 });
 </script>
