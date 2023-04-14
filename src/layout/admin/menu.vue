@@ -50,7 +50,7 @@
             <section>
               <!-- <i :class="pmenu?.icon"></i> -->
               <component
-                :is="icons[pmenu?.icon]"
+                :is="icons[pmenu?.icon!]"
                 theme="outline"
                 size="24"
                 fill="#f50"
