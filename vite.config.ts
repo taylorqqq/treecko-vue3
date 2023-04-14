@@ -41,18 +41,10 @@ export default ({ command, mode }: ConfigEnv) => {
       port: 3001,
       proxy: {
         VITE_ADMIN_API: {
-          target: "http://localhost:3000",
+          target: env.VITE_API_URL,
           changeOrigin: true,
         },
       },
     },
   };
 };
-
-// https://vitejs.dev/config/
-// export default defineConfig({
-//   plugins: [vue()],
-//   resolve: {
-//     alias,
-//   },
-// });
