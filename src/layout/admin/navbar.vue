@@ -23,7 +23,7 @@
     </div>
 
     <div class="flex justify-between items-center cursor-pointer">
-      <Notification class="mr-8" />
+      <Notification class="mr-8 hidden md:block" />
       <!-- <i
         class="mr-8"
         @click="fullScreen"
@@ -34,7 +34,7 @@
         size="24"
         fill="black"
         @click="fullScreen"
-        class="mr-8"
+        class="mr-8 hidden md:block"
         v-show="!isFullScreen"
       />
       <i-off-screen
@@ -42,7 +42,7 @@
         size="24"
         fill="black"
         @click="fullScreen"
-        class="mr-8"
+        class="mr-8 hidden md:block"
         v-show="isFullScreen"
       />
       <div class="relative flex justify-between items-center group">
