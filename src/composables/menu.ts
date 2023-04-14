@@ -1,3 +1,4 @@
+import { IMenu } from "#/menu";
 import router from "@/router";
 import { ref } from "vue";
 class Menu {
@@ -13,7 +14,7 @@ class Menu {
       .getRoutes()
       .filter((route) => route.meta?.menu && route?.children?.length)
       .map((route) => {
-        let menu: IMenu = { ...route.meta?.menu };
+        let menu = { ...route.meta?.menu } as IMenu;
         menu.children = route.children
           ?.filter((child) => child.meta?.menu)
           .map((child) => {
