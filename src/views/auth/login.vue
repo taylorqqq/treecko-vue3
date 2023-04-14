@@ -42,10 +42,10 @@
                 class="fa-brands fa-weixin bg-green-600 text-white rounded-full p-1 cursor-pointer"
               ></i> -->
               <i-wechat
-                theme="filled"
+                theme="outline"
                 size="24"
-                fill="green"
-                class="cursor-pointer"
+                fill="#fff"
+                class="bg-green-600 text-white rounded-full p-1 cursor-pointer"
               />
             </div>
           </div>
