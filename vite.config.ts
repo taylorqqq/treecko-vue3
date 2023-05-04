@@ -16,8 +16,10 @@ export default ({ command, mode }: ConfigEnv) => {
     },
     build,
     server: {
+      host: "0.0.0.0",
+      port: 8080,
       open: true,
-      port: 3001,
+      https: false,
       proxy: {
         VITE_ADMIN_API: {
           target: env.VITE_API_URL,
