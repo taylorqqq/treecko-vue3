@@ -1,13 +1,8 @@
 <template>
   <div>
     <div class="grid md:grid-cols-4 gap-3">
-      <el-card
-        class="cursor-pointer"
-        shadow="hover"
-        :body-style="{ padding: '20px' }"
-        v-for="card in cardList"
-        :ke="card.id"
-      >
+      <el-card class="cursor-pointer" shadow="hover" :body-style="{ padding: '20px' }" v-for="card in cardList"
+        :key="card.id">
         <template #header>
           <div class="flex justify-between items-center">
             {{ card.title }}
@@ -17,10 +12,7 @@
 
         <section class="flex justify-between items-center mt-3">
           <span class="text-3xl">{{ card.price }}</span>
-          <i
-            class="text-violet-500 text-3xl"
-            :class="[card.icon, card.iconColor]"
-          ></i>
+          <i class="text-violet-500 text-3xl" :class="[card.icon, card.iconColor]"></i>
         </section>
 
         <section class="flex justify-between items-center mt-6 text-base">

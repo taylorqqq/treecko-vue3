@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "serve": "vite",
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
@@ -16,6 +17,7 @@
     "@types/mockjs": "^1.0.7",
     "@vee-validate/i18n": "^4.5.7",
     "@vee-validate/rules": "^4.5.7",
+    "@vueuse/core": "^10.5.0",
     "@wangeditor/editor": "^5.1.23",
     "@wangeditor/editor-for-vue": "^5.1.12",
     "animate.css": "^4.1.1",

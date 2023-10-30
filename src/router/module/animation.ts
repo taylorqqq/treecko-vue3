@@ -33,4 +33,4 @@ export default {
       },
     },
   ],
-} as RouteRecordRaw;
+} as unknown as RouteRecordRaw;
